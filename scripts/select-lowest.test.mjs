@@ -29,3 +29,11 @@ test('converts Polish local price using checked FX and retains all 12 pairs', ()
   assert.equal(pl.fx_eur_pln, 4.2);
   assert.equal(rows.filter(x => x.available).length, 1);
 });
+
+test('keeps a lower local comparison price when checkout and stock are not independently readable', () => {
+  const rows = selectLowest(batch([offer(), offer({ retailer: 'Local comparison seller', original_price: 523.93, verification: 'Comparison-listed; retailer checkout price not independently confirmed', comparison_url: 'https://comparison.example/exact-model', comparison_seller: 'Local comparison seller', comparison_seller_country: 'Netherlands', url: null, orderable: null })]));
+  const nl = rows.find(x => x.model === '34B2U5900C' && x.country === 'Netherlands');
+  assert.equal(nl.price_eur, 523.93);
+  assert.equal(nl.url, 'https://comparison.example/exact-model');
+  assert.match(nl.status_note, /checkout not independently confirmed/);
+});
