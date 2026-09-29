@@ -358,5 +358,44 @@
     "fx_eur_pln": 4.373,
     "available": true,
     "url": "https://allegro.pl/produkt/monitor-led-philips-34e1c5600am-01-34-3440-x-1440-px-va-92068fa8-afda-43be-b762-4d9ee580ed9f"
+  },
+  {
+    "timestamp": "2026-09-29T10:02:39.330Z",
+    "original_currency": "EUR",
+    "available": true,
+    "model": "34B2U5900C",
+    "country": "Netherlands",
+    "retailer": "Redable.nl via Tweakers Pricewatch",
+    "original_price": 523.93,
+    "price_eur": 523.93,
+    "url": "https://www.redable.nl/product/868025/philips-5000-series-34b2u5900c-00-computer-monitor-86-4-cm-34-5120-x-2160-pixels-wuhd-lcd-grijs",
+    "comparison_url": "https://tweakers.net/pricewatch/2376176/philips-34b2u5900c-00-grijs.html",
+    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed"
+  },
+  {
+    "timestamp": "2026-09-29T10:02:39.330Z",
+    "original_currency": "EUR",
+    "available": true,
+    "model": "34B2U6603CH",
+    "country": "Netherlands",
+    "retailer": "HardwareWebwinkel.nl via Tweakers Pricewatch",
+    "original_price": 532.95,
+    "price_eur": 532.95,
+    "url": "https://www.hardwarewebwinkel.nl/randapparatuur/beeld/monitoren/groter-32-inch-monitoren/philips-34-inch-curved-business-monitor-34b2u6603ch-wqhd-thunderbolt-4.html",
+    "comparison_url": "https://tweakers.net/pricewatch/2105896/philips-6000-serie-34b2u6603ch-00-grijs.html",
+    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed"
+  },
+  {
+    "timestamp": "2026-09-29T10:02:39.330Z",
+    "original_currency": "EUR",
+    "available": true,
+    "model": "34B2U5600C",
+    "country": "Netherlands",
+    "retailer": "RedShell.nl via Tweakers Pricewatch",
+    "original_price": 421.32,
+    "price_eur": 421.32,
+    "url": "https://www.redshell.nl/philips-5000-series-34b2u5600c00-computer-monitor-864-cm-34-3440-x-1440-pixels-dual-qhd-lcd-grijs-1",
+    "comparison_url": "https://tweakers.net/pricewatch/2114270/philips-34b2u5600c-00-grijs.html",
+    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed"
   }
 ]
