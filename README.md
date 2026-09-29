@@ -2,6 +2,8 @@
 
 Public GitHub Pages dashboard for tracking Philips ultrawide monitor prices across Germany, the Netherlands, and Poland.
 
+**Live dashboard:** https://hyunwooopa.github.io/codexConnector/
+
 Tracked models:
 - 34B2U5900C
 - 34B2U6603CH
