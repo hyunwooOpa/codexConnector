@@ -717,13 +717,14 @@
     "timestamp": "2026-09-29T10:41:51.114Z",
     "model": "34E1C5600AM",
     "country": "Netherlands",
-    "retailer": "No current local offer price retrievable (Amazon.nl exact ASIN checked)",
+    "retailer": "Amazon.nl — page blocked; current price unknown",
     "original_currency": "EUR",
     "original_price": null,
     "price_eur": null,
     "available": false,
     "url": "https://www.amazon.nl/dp/B0D5CRPLWN",
-    "status_note": "Amazon.nl product page price and Dutch delivery inaccessible."
+    "status_note": "Browser returned ERR_BLOCKED_BY_CLIENT and web reader could not open ASIN B0D5CRPLWN. Beslist displayed €368.44 in an older crawl; that is a lead, not a current observation.",
+    "comparison_url": "https://www.beslist.nl/products/computers/computers_19664325_19904521/c/aansluitingen_monitor~8070222"
   },
   {
     "timestamp": "2026-09-29T10:41:51.114Z",
