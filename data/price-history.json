@@ -211,5 +211,16 @@
     "price_eur": null,
     "available": false,
     "url": null
+  },
+  {
+    "timestamp": "2026-09-29T09:02:43.498Z",
+    "model": "34E1C5600AM",
+    "country": "Netherlands",
+    "retailer": "Amazon.nl",
+    "original_currency": "EUR",
+    "original_price": 368.44,
+    "price_eur": 368.44,
+    "available": true,
+    "url": "https://www.amazon.nl/dp/B0D5CRPLWN"
   }
 ]
