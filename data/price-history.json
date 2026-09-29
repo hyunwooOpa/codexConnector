@@ -1,0 +1,5 @@
+[
+  {"timestamp":"2026-09-29T14:00:00+02:00","model":"34B2U5900C","country":"Netherlands","retailer":"Redable","original_currency":"EUR","original_price":523.93,"price_eur":523.93,"available":true,"url":null},
+  {"timestamp":"2026-09-29T14:00:00+02:00","model":"34B2U6603CH","country":"Germany","retailer":"TECHNIKdirekt","original_currency":"EUR","original_price":479.99,"price_eur":479.99,"available":true,"url":null},
+  {"timestamp":"2026-09-29T14:00:00+02:00","model":"34B2U5600C","country":"Germany","retailer":"notebooksbilliger","original_currency":"EUR","original_price":379.90,"price_eur":379.90,"available":true,"url":null}
+]
