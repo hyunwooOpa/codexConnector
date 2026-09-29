@@ -24,6 +24,7 @@ function checkedOffer(offer, now, fx) {
   const listed = offer.verification?.startsWith('Pricewatch-listed');
   if (offer.verification !== 'retailer-confirmed' && !listed) throw new Error(`Unknown verification: ${offer.model}/${offer.country}`);
   if (listed && !validUrl(offer.comparison_url)) throw new Error(`Missing comparison URL: ${offer.model}/${offer.country}`);
+  if (listed && (!offer.comparison_seller || offer.comparison_seller_country !== offer.country)) throw new Error(`Comparison seller country mismatch: ${offer.model}/${offer.country}`);
   const price_eur = offer.country === 'Poland' ? Math.round(offer.original_price / fx * 100) / 100 : offer.original_price;
   return { ...offer, price_eur };
 }
