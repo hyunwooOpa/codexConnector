@@ -56,6 +56,7 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       if (historyPath) {
         const previous = JSON.parse(await readFile(historyPath, 'utf8'));
         if (!Array.isArray(previous)) throw new Error('History must be an array');
+        if (previous.some(x => x.timestamp === observations[0].timestamp && MODELS.includes(x.model) && COUNTRIES.includes(x.country))) throw new Error('Observation timestamp already exists in history; use a fresh check timestamp');
         await writeFile(historyPath, JSON.stringify([...previous, ...observations], null, 2) + '\n');
       } else console.log(JSON.stringify(observations, null, 2));
     } catch (error) { console.error(error.message); process.exitCode = 1; }
