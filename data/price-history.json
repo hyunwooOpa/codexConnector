@@ -3,100 +3,181 @@
     "timestamp": "2026-09-29T14:00:00+02:00",
     "model": "34B2U5900C",
     "country": "Netherlands",
-    "retailer": "Redable",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 523.93,
-    "price_eur": 523.93,
-    "available": true,
-    "url": null
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "Redable",
+      "original_price": 523.93,
+      "price_eur": 523.93,
+      "url": null,
+      "verification": null
+    },
+    "correction_reason": "Future-dated observation with no source URL; Dutch price unverified.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T14:00:00+02:00",
     "model": "34B2U6603CH",
     "country": "Germany",
-    "retailer": "TECHNIKdirekt",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 479.99,
-    "price_eur": 479.99,
-    "available": true,
-    "url": null
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "TECHNIKdirekt",
+      "original_price": 479.99,
+      "price_eur": 479.99,
+      "url": null,
+      "verification": null
+    },
+    "correction_reason": "Future-dated observation with no source URL.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T14:00:00+02:00",
     "model": "34B2U5600C",
     "country": "Germany",
-    "retailer": "notebooksbilliger",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 379.9,
-    "price_eur": 379.9,
-    "available": true,
-    "url": null
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "notebooksbilliger",
+      "original_price": 379.9,
+      "price_eur": 379.9,
+      "url": null,
+      "verification": null
+    },
+    "correction_reason": "Future-dated observation with no source URL.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T10:31:00+02:00",
     "model": "34B2U5900C",
     "country": "Netherlands",
-    "retailer": "Alternate",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 529,
-    "price_eur": 529,
-    "available": true,
-    "url": null
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "Alternate",
+      "original_price": 529,
+      "price_eur": 529,
+      "url": null,
+      "verification": null
+    },
+    "correction_reason": "No source URL; lowest Dutch price unverified.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T10:31:00+02:00",
     "model": "34B2U6603CH",
     "country": "Germany",
-    "retailer": "TECHNIKdirekt",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 479.99,
-    "price_eur": 479.99,
-    "available": true,
-    "url": null
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "TECHNIKdirekt",
+      "original_price": 479.99,
+      "price_eur": 479.99,
+      "url": null,
+      "verification": null
+    },
+    "correction_reason": "No source URL; retailer price unverified.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T10:31:00+02:00",
     "model": "34B2U5600C",
     "country": "Germany",
-    "retailer": "easynotebooks.de via Idealo",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 369.12,
-    "price_eur": 369.12,
-    "available": true,
-    "url": null
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "easynotebooks.de via Idealo",
+      "original_price": 369.12,
+      "price_eur": 369.12,
+      "url": null,
+      "verification": null
+    },
+    "correction_reason": "No source URL; retailer price unverified.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T10:31:00+02:00",
     "model": "34E1C5600AM",
     "country": "Poland",
-    "retailer": "verified Polish retailer",
+    "retailer": "Invalidated historical price",
     "original_currency": "PLN",
-    "original_price": 1699,
-    "price_eur": 388.7,
-    "available": true,
-    "url": null
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "verified Polish retailer",
+      "original_price": 1699,
+      "price_eur": 388.7,
+      "url": null,
+      "verification": null
+    },
+    "correction_reason": "No named retailer or source URL; Polish price unverified.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
     "model": "34B2U5900C",
     "country": "Germany",
-    "retailer": "Alternate.de",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 587,
-    "price_eur": 587,
-    "available": true,
-    "url": "https://www.alternate.de/Monitore/Philips-Monitore"
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "Alternate.de",
+      "original_price": 587,
+      "price_eur": 587,
+      "url": "https://www.alternate.de/Monitore/Philips-Monitore",
+      "verification": null
+    },
+    "correction_reason": "Category page, not a product offer; price and orderability unsupported.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
     "model": "34B2U5900C",
     "country": "Netherlands",
-    "retailer": "bol.com",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 529,
-    "price_eur": 529,
-    "available": true,
-    "url": "https://www.bol.com/nl/nl/l/philips-dual-mode-monitoren-dagelijks-gebruik-netwerkaansluiting-rj45/59205/4294884369%2B75827%2B75821/"
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "bol.com",
+      "original_price": 529,
+      "price_eur": 529,
+      "url": "https://www.bol.com/nl/nl/l/philips-dual-mode-monitoren-dagelijks-gebruik-netwerkaansluiting-rj45/59205/4294884369%2B75827%2B75821/",
+      "verification": null
+    },
+    "correction_reason": "Category page, not a product offer; Dutch price unsupported.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
@@ -114,35 +195,62 @@
     "timestamp": "2026-09-29T08:42:46.329Z",
     "model": "34B2U6603CH",
     "country": "Germany",
-    "retailer": "TECHNIKdirekt via guenstiger.de",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 479.99,
-    "price_eur": 479.99,
-    "available": true,
-    "url": "https://www.guenstiger.de/Produkt/Philips/6000_Series_34B2U6603CH.html"
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "TECHNIKdirekt via guenstiger.de",
+      "original_price": 479.99,
+      "price_eur": 479.99,
+      "url": "https://www.guenstiger.de/Produkt/Philips/6000_Series_34B2U6603CH.html",
+      "verification": null
+    },
+    "correction_reason": "Comparison product page, not the stated retailer offer; seller and orderability unsupported.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
     "model": "34B2U6603CH",
     "country": "Netherlands",
-    "retailer": "Tweakers Pricewatch",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 532.95,
-    "price_eur": 532.95,
-    "available": true,
-    "url": "https://tweakers.net/serie/2342/6000-serie/"
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "Tweakers Pricewatch",
+      "original_price": 532.95,
+      "price_eur": 532.95,
+      "url": "https://tweakers.net/serie/2342/6000-serie/",
+      "verification": null
+    },
+    "correction_reason": "Series page, not an exact-model local offer.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
     "model": "34B2U6603CH",
     "country": "Poland",
-    "retailer": "Ceneo.pl",
+    "retailer": "Invalidated historical price",
     "original_currency": "PLN",
-    "original_price": 2416.01,
-    "price_eur": 552.75,
+    "original_price": null,
+    "price_eur": null,
     "fx_eur_pln": 4.3709,
-    "available": true,
-    "url": "https://www.ceneo.pl/172157560"
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "Ceneo.pl",
+      "original_price": 2416.01,
+      "price_eur": 552.75,
+      "url": "https://www.ceneo.pl/172157560",
+      "verification": null
+    },
+    "correction_reason": "Comparison page without identified seller or verified orderability.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
@@ -170,25 +278,43 @@
     "timestamp": "2026-09-29T08:42:46.329Z",
     "model": "34B2U5600C",
     "country": "Poland",
-    "retailer": "Ceneo.pl",
+    "retailer": "Invalidated historical price",
     "original_currency": "PLN",
-    "original_price": 1871.92,
-    "price_eur": 428.27,
+    "original_price": null,
+    "price_eur": null,
     "fx_eur_pln": 4.3709,
-    "available": true,
-    "url": "https://www.ceneo.pl/Monitory/Czestotliwosc_odswiezania%3A~76Hz%2C143_Hz%3BPrzekatna_ekranu%3A34_cale.htm"
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "Ceneo.pl",
+      "original_price": 1871.92,
+      "price_eur": 428.27,
+      "url": "https://www.ceneo.pl/Monitory/Czestotliwosc_odswiezania%3A~76Hz%2C143_Hz%3BPrzekatna_ekranu%3A34_cale.htm",
+      "verification": null
+    },
+    "correction_reason": "Filtered monitor category, not an exact-model Polish offer.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
     "model": "34E1C5600AM",
     "country": "Poland",
-    "retailer": "Ceneo.pl",
+    "retailer": "Invalidated historical price",
     "original_currency": "PLN",
-    "original_price": 1699,
-    "price_eur": 388.71,
+    "original_price": null,
+    "price_eur": null,
     "fx_eur_pln": 4.3709,
-    "available": true,
-    "url": "https://www.ceneo.pl/Monitory/p%3APhilips%3BCzestotliwosc_odswiezania%3A100Hz.htm"
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "Ceneo.pl",
+      "original_price": 1699,
+      "price_eur": 388.71,
+      "url": "https://www.ceneo.pl/Monitory/p%3APhilips%3BCzestotliwosc_odswiezania%3A100Hz.htm",
+      "verification": null
+    },
+    "correction_reason": "Filtered monitor category, not an exact-model Polish offer.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T08:42:46.329Z",
@@ -238,12 +364,21 @@
     "timestamp": "2026-09-29T11:31:15+02:00",
     "model": "34B2U5900C",
     "country": "Netherlands",
-    "retailer": "HardwareXL by Informatique via bol",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 655.6,
-    "price_eur": 655.6,
-    "available": true,
-    "url": "https://www.bol.com/nl/nl/p/philips-34b2u5900c-34-inch-ultrawide-5k2k-business-monitor-usb-c-100w-120hz-5-jaar-garantie/9300000328936948/"
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "HardwareXL by Informatique via bol",
+      "original_price": 655.6,
+      "price_eur": 655.6,
+      "url": "https://www.bol.com/nl/nl/p/philips-34b2u5900c-34-inch-ultrawide-5k2k-business-monitor-usb-c-100w-120hz-5-jaar-garantie/9300000328936948/",
+      "verification": null
+    },
+    "correction_reason": "Higher Dutch offer recorded as the country minimum without a complete comparison; minimum unverified.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T11:31:15+02:00",
@@ -272,12 +407,21 @@
     "timestamp": "2026-09-29T11:31:15+02:00",
     "model": "34B2U6603CH",
     "country": "Netherlands",
-    "retailer": "bol",
+    "retailer": "Invalidated historical price",
     "original_currency": "EUR",
-    "original_price": 599,
-    "price_eur": 599,
-    "available": true,
-    "url": "https://www.bol.com/nl/nl/p/philips-6000-series-34b2u6603ch-00-computer-monitor-86-4-cm-3440-x-1440-pixels-wide-quad-hd-lcd-grijs/9300000184478458/"
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "invalidated_observation": {
+      "retailer": "bol",
+      "original_price": 599,
+      "price_eur": 599,
+      "url": "https://www.bol.com/nl/nl/p/philips-6000-series-34b2u6603ch-00-computer-monitor-86-4-cm-3440-x-1440-pixels-wide-quad-hd-lcd-grijs/9300000184478458/",
+      "verification": null
+    },
+    "correction_reason": "Higher Dutch offer recorded as the country minimum despite lower local listings; minimum unverified.",
+    "corrected_at": "2026-09-29T10:15:45.262Z"
   },
   {
     "timestamp": "2026-09-29T11:31:15+02:00",
@@ -362,28 +506,48 @@
   {
     "timestamp": "2026-09-29T10:02:39.330Z",
     "original_currency": "EUR",
-    "available": true,
+    "available": false,
     "model": "34B2U5900C",
     "country": "Netherlands",
-    "retailer": "Redable.nl via Tweakers Pricewatch",
-    "original_price": 523.93,
-    "price_eur": 523.93,
-    "url": "https://www.redable.nl/product/868025/philips-5000-series-34b2u5900c-00-computer-monitor-86-4-cm-34-5120-x-2160-pixels-wuhd-lcd-grijs",
+    "retailer": "Invalidated historical price",
+    "original_price": null,
+    "price_eur": null,
+    "url": null,
     "comparison_url": "https://tweakers.net/pricewatch/2376176/philips-34b2u5900c-00-grijs.html",
-    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed"
+    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed",
+    "invalidated_observation": {
+      "retailer": "Redable.nl via Tweakers Pricewatch",
+      "original_price": 523.93,
+      "price_eur": 523.93,
+      "url": "https://www.redable.nl/product/868025/philips-5000-series-34b2u5900c-00-computer-monitor-86-4-cm-34-5120-x-2160-pixels-wuhd-lcd-grijs",
+      "verification": "Pricewatch-listed; retailer checkout price not independently confirmed"
+    },
+    "correction_reason": "€523.93 Tweakers listing identifies Redable.be, not a verified Redable.nl offer.",
+    "corrected_at": "2026-09-29T10:15:45.262Z",
+    "correction_source_url": "https://tweakers.net/pricewatch/2376176/philips-34b2u5900c-00-grijs.html"
   },
   {
     "timestamp": "2026-09-29T10:02:39.330Z",
     "original_currency": "EUR",
-    "available": true,
+    "available": false,
     "model": "34B2U6603CH",
     "country": "Netherlands",
-    "retailer": "HardwareWebwinkel.nl via Tweakers Pricewatch",
-    "original_price": 532.95,
-    "price_eur": 532.95,
-    "url": "https://www.hardwarewebwinkel.nl/randapparatuur/beeld/monitoren/groter-32-inch-monitoren/philips-34-inch-curved-business-monitor-34b2u6603ch-wqhd-thunderbolt-4.html",
+    "retailer": "Invalidated historical price",
+    "original_price": null,
+    "price_eur": null,
+    "url": null,
     "comparison_url": "https://tweakers.net/pricewatch/2105896/philips-6000-serie-34b2u6603ch-00-grijs.html",
-    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed"
+    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed",
+    "invalidated_observation": {
+      "retailer": "HardwareWebwinkel.nl via Tweakers Pricewatch",
+      "original_price": 532.95,
+      "price_eur": 532.95,
+      "url": "https://www.hardwarewebwinkel.nl/randapparatuur/beeld/monitoren/groter-32-inch-monitoren/philips-34-inch-curved-business-monitor-34b2u6603ch-wqhd-thunderbolt-4.html",
+      "verification": "Pricewatch-listed; retailer checkout price not independently confirmed"
+    },
+    "correction_reason": "€532.95 was not substantiated by the linked Dutch retailer or current exact-model comparison listing.",
+    "corrected_at": "2026-09-29T10:15:45.262Z",
+    "correction_source_url": "https://tweakers.net/pricewatch/2105896/philips-6000-serie-34b2u6603ch-00-grijs.html"
   },
   {
     "timestamp": "2026-09-29T10:02:39.330Z",
