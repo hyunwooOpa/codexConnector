@@ -25,6 +25,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v6
 
+      - name: Check price selection and browser code
+        run: |
+          node --test scripts/select-lowest.test.mjs
+          node --check app.js
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
