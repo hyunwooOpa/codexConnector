@@ -222,5 +222,141 @@
     "price_eur": 368.44,
     "available": true,
     "url": "https://www.amazon.nl/dp/B0D5CRPLWN"
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U5900C",
+    "country": "Germany",
+    "retailer": "No currently orderable local offer verified",
+    "original_currency": "EUR",
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U5900C",
+    "country": "Netherlands",
+    "retailer": "HardwareXL by Informatique via bol",
+    "original_currency": "EUR",
+    "original_price": 655.6,
+    "price_eur": 655.6,
+    "available": true,
+    "url": "https://www.bol.com/nl/nl/p/philips-34b2u5900c-34-inch-ultrawide-5k2k-business-monitor-usb-c-100w-120hz-5-jaar-garantie/9300000328936948/"
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U5900C",
+    "country": "Poland",
+    "retailer": "Proshop.pl",
+    "original_currency": "PLN",
+    "original_price": 3731,
+    "price_eur": 853.19,
+    "fx_eur_pln": 4.373,
+    "available": true,
+    "url": "https://www.proshop.pl/Monitor/34-Philips-34B2U5900C-5000-Series-34-5120-x-2160-120-Hz-VA/3466968"
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U6603CH",
+    "country": "Germany",
+    "retailer": "Retailer price seen on comparison page; direct offer not verified",
+    "original_currency": "EUR",
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U6603CH",
+    "country": "Netherlands",
+    "retailer": "bol",
+    "original_currency": "EUR",
+    "original_price": 599,
+    "price_eur": 599,
+    "available": true,
+    "url": "https://www.bol.com/nl/nl/p/philips-6000-series-34b2u6603ch-00-computer-monitor-86-4-cm-3440-x-1440-pixels-wide-quad-hd-lcd-grijs/9300000184478458/"
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U6603CH",
+    "country": "Poland",
+    "retailer": "Lower comparison listing found; direct retailer price not verified",
+    "original_currency": "PLN",
+    "original_price": null,
+    "price_eur": null,
+    "fx_eur_pln": 4.373,
+    "available": false,
+    "url": null
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U5600C",
+    "country": "Germany",
+    "retailer": "playox.de",
+    "original_currency": "EUR",
+    "original_price": 369.12,
+    "price_eur": 369.12,
+    "available": true,
+    "url": "https://www.playox.de/philips-34b2u5600c-curved-monitor-86-36-cm-34-zoll-n2008213469"
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U5600C",
+    "country": "Netherlands",
+    "retailer": "Lower comparison listing found; direct retailer page inaccessible",
+    "original_currency": "EUR",
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34B2U5600C",
+    "country": "Poland",
+    "retailer": "Current comparison listing found; direct retailer price not verified",
+    "original_currency": "PLN",
+    "original_price": null,
+    "price_eur": null,
+    "fx_eur_pln": 4.373,
+    "available": false,
+    "url": null
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34E1C5600AM",
+    "country": "Germany",
+    "retailer": "No currently orderable local offer verified",
+    "original_currency": "EUR",
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34E1C5600AM",
+    "country": "Netherlands",
+    "retailer": "Amazon.nl product page inaccessible for current price",
+    "original_currency": "EUR",
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null
+  },
+  {
+    "timestamp": "2026-09-29T11:31:15+02:00",
+    "model": "34E1C5600AM",
+    "country": "Poland",
+    "retailer": "Firma-eureka via Allegro",
+    "original_currency": "PLN",
+    "original_price": 1699,
+    "price_eur": 388.52,
+    "fx_eur_pln": 4.373,
+    "available": true,
+    "url": "https://allegro.pl/produkt/monitor-led-philips-34e1c5600am-01-34-3440-x-1440-px-va-92068fa8-afda-43be-b762-4d9ee580ed9f"
   }
 ]
