@@ -729,7 +729,7 @@
     "timestamp": "2026-09-29T10:41:51.114Z",
     "model": "34E1C5600AM",
     "country": "Poland",
-    "retailer": "Amazon.pl via Ceneo",
+    "retailer": "Amazon.pl",
     "original_currency": "PLN",
     "original_price": 1699,
     "price_eur": 388.52,
@@ -740,7 +740,7 @@
     "fx_rate_date": "2026-09-28",
     "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "comparison_url": "https://www.ceneo.pl/194026130",
-    "comparison_seller": "Amazon.pl via Ceneo",
+    "comparison_seller": "Amazon",
     "comparison_seller_country": "Poland",
     "status_note": "Ceneo lists Amazon offer with one-day dispatch; Amazon.pl checkout inaccessible."
   }
