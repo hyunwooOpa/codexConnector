@@ -13,3 +13,5 @@ Tracked models:
 Data lives in `data/monitors.json` and `data/price-history.json`. Missing prices are shown as unavailable/pending rather than estimated.
 
 The page is designed for GitHub Pages and the price history can be updated by appending observations to `data/price-history.json`.
+
+Price checks include [Amazon.nl](https://www.amazon.nl/), [Amazon.de](https://www.amazon.de/), [Amazon.pl](https://www.amazon.pl/), and [Tweakers Pricewatch](https://tweakers.net/monitors/), alongside other local retailers. Each recorded price should link to the exact offer used; the presence of a source does not imply every model is available there.
