@@ -1,4 +1,6 @@
 import { readFile, writeFile } from 'node:fs/promises';
+import { resolve } from 'node:path';
+import { pathToFileURL } from 'node:url';
 
 export const MODELS = ['34B2U5900C', '34B2U6603CH', '34B2U5600C', '34E1C5600AM'];
 export const COUNTRIES = ['Germany', 'Netherlands', 'Poland'];
@@ -19,8 +21,9 @@ function checkedOffer(offer, now, fx) {
   if (offer.vat_included !== true || offer.orderable !== true) throw new Error(`VAT/orderability unverified: ${offer.model}/${offer.country} at ${offer.retailer}`);
   const seen = Date.parse(offer.checked_at);
   if (!Number.isFinite(seen) || seen > now + 60_000 || now - seen > MAX_AGE_MS) throw new Error(`Stale or invalid check: ${offer.model}/${offer.country} at ${offer.retailer}`);
-  if (offer.verification !== 'retailer-confirmed' && offer.verification !== 'Pricewatch-listed') throw new Error(`Unknown verification: ${offer.model}/${offer.country}`);
-  if (offer.verification === 'Pricewatch-listed' && !validUrl(offer.comparison_url)) throw new Error(`Missing comparison URL: ${offer.model}/${offer.country}`);
+  const listed = offer.verification?.startsWith('Pricewatch-listed');
+  if (offer.verification !== 'retailer-confirmed' && !listed) throw new Error(`Unknown verification: ${offer.model}/${offer.country}`);
+  if (listed && !validUrl(offer.comparison_url)) throw new Error(`Missing comparison URL: ${offer.model}/${offer.country}`);
   const price_eur = offer.country === 'Poland' ? Math.round(offer.original_price / fx * 100) / 100 : offer.original_price;
   return { ...offer, price_eur };
 }
@@ -42,7 +45,7 @@ export function selectLowest(batch) {
   }));
 }
 
-if (process.argv[1] && import.meta.url === new URL(`file://${process.argv[1]}`).href) {
+if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1])).href) {
   const [input, flag, historyPath] = process.argv.slice(2);
   if (!input || (flag && flag !== '--history') || (flag && !historyPath)) {
     console.error('Usage: node scripts/select-lowest.mjs candidate-batch.json [--history data/price-history.json]');
