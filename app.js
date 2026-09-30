@@ -52,7 +52,7 @@ function editProduct(model){const p=metadata(model),s=localState(p);$('editing')
 function resetForm(){$('productForm').reset();$('editing').value='';$('newModel').readOnly=false;$('newEnabled').checked=true;$('saveProduct').textContent='Add product draft'}
 function persist(){localStorage.setItem(KEY,JSON.stringify(drafts));localStorage.setItem(STATE,JSON.stringify(shopping))}
 function removeProduct(model){
- const p=metadata(model);
+ const p=[...catalog,...drafts].find(x=>x.model===model)||metadata(model);
  if(!p||!confirm(`Remove ${p.name||model} from the tracking list?`))return;
  drafts=drafts.filter(x=>x.model!==model);
  if(catalog.some(x=>x.model===model)) shopping[model]={...(shopping[model]||{}),removed:true};
