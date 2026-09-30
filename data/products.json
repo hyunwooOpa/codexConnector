@@ -166,7 +166,8 @@
     "competitor_reason": "34-inch curved IPS ultrawide, 3440x1440 at 120Hz, TÜV Flicker-free and Low Blue Light",
     "discovery_source_url": "https://www.asus.com/nl/displays-desktops/monitors/proart/proart-display-pa348cgv/techspec/",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
-    "enabled": true,
+    "enabled": false,
+    "deselection_reason": "Paused by €800 gross-price ceiling: current Dutch retailer listings were €860.30–€891.76 incl. VAT. No longer included in scheduled checks; history is preserved.",
     "variant": "PA348CGV",
     "target_price_eur": null,
     "product_url": ""
