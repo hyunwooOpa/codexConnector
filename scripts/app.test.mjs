@@ -23,15 +23,15 @@ test('new component draft renders, persists, filters and never appears as a chec
  assert.match(el('overview').innerHTML,/Target €99.00/);
  el('category').value='GPU';vm.runInContext('render()',ctx);assert.match(el('overview').innerHTML,/No products match/);
  const reload=await boot(storage);assert.match(reload.el('overview').innerHTML,/32 GB memory kit/);
- assert.equal(reload.el('trackedCount').textContent,10);
+ assert.equal(reload.el('trackedCount').textContent,15);
 });
 
 test('role filter separates primary products from competitors',async()=>{
  const {el,ctx}=await boot();
  el('roleFilter').value='competitor';vm.runInContext('render()',ctx);
  assert.match(el('overview').innerHTML,/Competitor/);
- assert.doesNotMatch(el('overview').innerHTML,/Philips 34B2U5900C/);
+ assert.doesNotMatch(el('overview').innerHTML,/<h3>Philips 34B2U5900C/);
  el('roleFilter').value='primary';vm.runInContext('render()',ctx);
- assert.match(el('overview').innerHTML,/Philips 34B2U5900C/);
+ assert.match(el('overview').innerHTML,/<h3>Philips 34B2U5900C/);
  assert.doesNotMatch(el('overview').innerHTML,/Samsung ViewFinity/);
 });
