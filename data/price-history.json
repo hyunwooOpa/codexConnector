@@ -3965,20 +3965,17 @@
       "34E1C5600AM"
     ],
     "country": "Belgium",
-    "retailer": "Beslist.be listed retailer",
+    "retailer": "Dell Belgium",
     "original_currency": "EUR",
-    "original_price": 599,
-    "price_eur": 599,
+    "original_price": 679.31,
+    "price_eur": 679.31,
     "available": true,
-    "url": "https://www.beslist.be/products/computers/c/merk~3586",
-    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
+    "url": "https://www.dell.com/nl-be/shop/monitors/apd/dell-pro-p-34-usb-c-hubmonitor-voor-conferencing-p3426web/p3426web/-",
+    "verification": "retailer-confirmed",
     "evidence_type": "live-page",
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-09-30T18:05:04.822Z",
-    "comparison_url": "https://www.beslist.be/products/computers/c/merk~3586",
-    "comparison_seller": "Beslist.be listed retailer",
-    "comparison_seller_country": "Belgium",
-    "status_note": "Exact-model Belgian comparison price; underlying retailer and checkout stock were not exposed in the listing."
+    "status_note": "Dell Belgium showed EUR 679.31 incl. VAT with add-to-cart. A EUR 599 comparison result was rejected because the underlying retailer and Belgian seller identity were not exposed."
   },
   {
     "timestamp": "2026-09-30T18:05:04.822Z",
@@ -4276,20 +4273,17 @@
       "34E1C5600AM"
     ],
     "country": "Belgium",
-    "retailer": "NBB.com België",
+    "retailer": "Dell Belgium",
     "original_currency": "EUR",
-    "original_price": 421.9,
-    "price_eur": 421.9,
+    "original_price": 460.17,
+    "price_eur": 460.17,
     "available": true,
-    "url": "https://tweakers.net/pricewatch/2189550/dell-pro-plus-p3425we-zwart.html",
-    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed",
+    "url": "https://www.dell.com/fr-be/shop/computer-monitors/ar/all-professional-monitors/appref=dell-pro-plus-product-line",
+    "verification": "retailer-confirmed",
     "evidence_type": "live-page",
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-09-30T18:05:04.822Z",
-    "comparison_url": "https://tweakers.net/pricewatch/2189550/dell-pro-plus-p3425we-zwart.html",
-    "comparison_seller": "NBB.com België",
-    "comparison_seller_country": "Belgium",
-    "status_note": "Belgian Pricewatch seller; free shipping, checkout not independently confirmed."
+    "status_note": "Verified Dell Belgium gross price. The cheaper comparison listing was rejected because its seller was not explicitly identified as Belgian."
   },
   {
     "timestamp": "2026-09-30T18:05:04.822Z",
