@@ -23,7 +23,7 @@ test('new component draft renders, persists, filters and never appears as a chec
  assert.match(el('overview').innerHTML,/Target €99.00/);
  el('category').value='GPU';vm.runInContext('render()',ctx);assert.match(el('overview').innerHTML,/No products match/);
  const reload=await boot(storage);assert.match(reload.el('overview').innerHTML,/32 GB memory kit/);
- assert.equal(reload.el('trackedCount').textContent,10);
+ assert.equal(reload.el('trackedCount').textContent,11);
 });
 
 test('role filter separates primary products from competitors',async()=>{

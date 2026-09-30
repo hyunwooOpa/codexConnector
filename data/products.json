@@ -76,7 +76,8 @@
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
     "discovery_price_eur": 699,
-    "enabled": false,
+    "enabled": true,
+    "reselection_reason": "Restored to the watch list as the strongest of the previously paused alternatives: newer business platform, 100Hz productivity refresh, USB-C hub, webcam, ergonomic adjustment and documented flicker-free eye-comfort features. It remains below the €800 ceiling; its 3440x1440 resolution is the main trade-off versus the active 5K2K models.",
     "variant": "P3426WEB",
     "target_price_eur": null,
     "product_url": ""
