@@ -3,8 +3,8 @@ import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 export const MODELS = ['34B2U5900C', '34B2U6603CH', '34B2U5600C', '34E1C5600AM'];
-export const COUNTRIES = ['Germany', 'Netherlands', 'Poland'];
-const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN' };
+export const COUNTRIES = ['Germany', 'Netherlands', 'Poland', 'Belgium'];
+const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN', Belgium: 'EUR' };
 const MAX_AGE_MS = 2 * 60 * 60 * 1000;
 
 function validUrl(value) {
