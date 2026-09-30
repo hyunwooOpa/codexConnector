@@ -55,8 +55,10 @@ export function selectLowest(batch, products = PRODUCTS) {
   return models.flatMap(model => COUNTRIES.map(country => {
     const matches = offers.filter(o => o.model === model && o.country === country).sort((a, b) => a.price_eur - b.price_eur);
     const best = matches[0];
-    if (!best) return { timestamp: batch.observed_at, model, category: active.find(p => p.model === model).category || "Other", country, retailer: 'No verified local orderable offer found', original_currency: CURRENCY[country], original_price: null, price_eur: null, available: false, url: null, ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
-    return { timestamp: batch.observed_at, model, category: active.find(p => p.model === model).category || "Other", country, retailer: best.retailer, original_currency: best.original_currency, original_price: best.original_price, price_eur: best.price_eur, available: true, url: validUrl(best.url) ? best.url : best.comparison_url, verification: best.verification, evidence_type: best.evidence_type, source_timestamp_status: best.source_timestamp_status, ...(best.source_price_at ? { source_price_at: best.source_price_at } : {}), source_checked_at: best.checked_at, ...(best.comparison_url ? { comparison_url: best.comparison_url, comparison_seller: best.comparison_seller, comparison_seller_country: best.comparison_seller_country } : {}), ...(best.status_note ? { status_note: best.status_note } : best.orderable !== true ? { status_note: 'Comparison listing only; retailer stock and checkout not independently confirmed.' } : {}), ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
+    const product = active.find(p => p.model === model);
+    const identity = { category: product.category || "Other", tracking_role: product.tracking_role || 'primary', ...(Array.isArray(product.competitor_of) && product.competitor_of.length ? { competitor_of: product.competitor_of } : {}) };
+    if (!best) return { timestamp: batch.observed_at, model, ...identity, country, retailer: 'No verified local orderable offer found', original_currency: CURRENCY[country], original_price: null, price_eur: null, available: false, url: null, ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
+    return { timestamp: batch.observed_at, model, ...identity, country, retailer: best.retailer, original_currency: best.original_currency, original_price: best.original_price, price_eur: best.price_eur, available: true, url: validUrl(best.url) ? best.url : best.comparison_url, verification: best.verification, evidence_type: best.evidence_type, source_timestamp_status: best.source_timestamp_status, ...(best.source_price_at ? { source_price_at: best.source_price_at } : {}), source_checked_at: best.checked_at, ...(best.comparison_url ? { comparison_url: best.comparison_url, comparison_seller: best.comparison_seller, comparison_seller_country: best.comparison_seller_country } : {}), ...(best.status_note ? { status_note: best.status_note } : best.orderable !== true ? { status_note: 'Comparison listing only; retailer stock and checkout not independently confirmed.' } : {}), ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
   }));
 }
 
@@ -77,4 +79,3 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
     } catch (error) { console.error(error.message); process.exitCode = 1; }
   }
 }
-
