@@ -3,7 +3,7 @@ import assert from 'node:assert/strict';
 import { selectLowest } from './select-lowest.mjs';
 
 const now = new Date().toISOString();
-const offer = (overrides = {}) => ({ model: '34B2U5900C', country: 'Netherlands', retailer: 'Local shop', retailer_country: 'Netherlands', original_currency: 'EUR', original_price: 650, vat_included: true, orderable: true, checked_at: now, verification: 'retailer-confirmed', url: 'https://shop.example/34B2U5900C', ...overrides });
+const offer = (overrides = {}) => ({ model: '34B2U5900C', country: 'Netherlands', retailer: 'Local shop', retailer_country: 'Netherlands', original_currency: 'EUR', original_price: 650, vat_included: true, orderable: true, checked_at: now, evidence_type: 'live-page', source_timestamp_status: 'not-displayed', verification: 'retailer-confirmed', url: 'https://shop.example/34B2U5900C', ...overrides });
 const batch = offers => ({ observed_at: now, fx_eur_pln: 4.2, fx_source_url: 'https://fx.example/rate', fx_checked_at: now, offers });
 
 test('selects cheaper Pricewatch listing even when a direct retailer is listed first', () => {
@@ -36,4 +36,20 @@ test('keeps a lower local comparison price when checkout and stock are not indep
   assert.equal(nl.price_eur, 523.93);
   assert.equal(nl.url, 'https://comparison.example/exact-model');
   assert.match(nl.status_note, /checkout not independently confirmed/);
+});
+
+test('rejects stale embedded offer dates despite a freshly checked page', () => {
+  assert.throws(() => selectLowest(batch([offer({ source_timestamp_status: 'dated', source_price_at: '2020-09-18T12:00:00Z' })])), /Stale or invalid source/);
+  assert.throws(() => selectLowest(batch([offer({ source_timestamp_status: 'dated' })])), /Stale or invalid source/);
+  assert.throws(() => selectLowest(batch([offer({ evidence_type: 'search-snippet' })])), /live price evidence/);
+  assert.throws(() => selectLowest(batch([offer({ source_timestamp_status: undefined })])), /source timestamp status/);
+});
+
+test('keeps source dates and preorder notes for current screenshot evidence', () => {
+  const rows = selectLowest(batch([offer({ evidence_type: 'user-screenshot', source_timestamp_status: 'dated', source_price_at: now, status_note: 'Preorder; available from 22 October 2026.' })]));
+  const row = rows.find(x => x.available);
+  assert.equal(row.source_price_at, now);
+  assert.equal(row.source_checked_at, now);
+  assert.equal(row.evidence_type, 'user-screenshot');
+  assert.equal(row.status_note, 'Preorder; available from 22 October 2026.');
 });
