@@ -36,6 +36,17 @@ function renderCards(){const shown=visibleProducts();$('overview').innerHTML=sho
   button.onclick=()=>removeProduct(button.dataset.remove);
   card.appendChild(button);
  });
+ // Keep the delete action tied to the rendered product index as a fallback for
+ // catalog cards whose edit metadata is unavailable.
+ [...$('overview').querySelectorAll('article.monitor-card')].forEach((card,index)=>{
+  if(card.querySelector('[data-remove]')||!shown[index])return;
+  const button=document.createElement('button');
+  button.className='card-btn remove-btn';
+  button.dataset.remove=shown[index].model;
+  button.textContent='Remove from list';
+  button.addEventListener('click',()=>removeProduct(shown[index].model));
+  card.appendChild(button);
+ });
  $('trackedCount').textContent=catalog.filter(p=>p.enabled!==false).length;
  $('draftCount').textContent=products().filter(isDraft).length;
  const reached=shown.filter(p=>{const t=localState(p).target,b=best(p.model);return t!=null&&b&&b.price_eur<=t});$('targetCount').textContent=reached.length;
