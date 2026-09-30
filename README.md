@@ -1,35 +1,36 @@
-# Philips Monitor Price Tracker
+# PC Upgrade Tracker
 
-Public GitHub Pages dashboard for tracking Philips ultrawide monitor prices across Germany, the Netherlands, Poland, and Belgium.
+[Live app](https://hyunwooopa.github.io/codexConnector/)
 
-**Live dashboard:** https://hyunwooopa.github.io/codexConnector/
+Track exact PC components and peripherals across Germany, Netherlands, Poland and Belgium. Categories cover monitors, GPUs, memory, CPUs, motherboards, storage, power supplies, cases, cooling, keyboards, mice, controllers, webcams, audio, networking, accessories and other PC products.
 
-Tracked models:
-- 34B2U5900C
-- 34B2U6603CH
-- 34B2U5600C
-- 34E1C5600AM
+## Product catalog
 
-Data lives in `data/monitors.json` and `data/price-history.json`. Missing prices are shown as unavailable/pending rather than estimated.
+`data/products.json` is the authoritative shared catalog. The app and scheduled collector read it; the selector no longer hard-codes Philips models. Existing Philips products retain their exact `model` identifiers so all price history continues to work. `data/monitors.json` is a legacy compatibility file, no longer used by the app or collector.
 
-The page is designed for GitHub Pages and the price history can be updated by appending observations to `data/price-history.json`.
+Each product has a unique exact `model` (manufacturer part number / variant identifier), `name`, `category`, optional `brand`, `variant`, `product_url`, `target_price_eur`, and `enabled` (default true). Distinct capacities, kit sizes, board models, keyboard layouts and switches must be separate catalog items. Model keys are case-sensitive. Do not rename an existing key without migrating its history.
 
-Price checks include [Amazon.nl](https://www.amazon.nl/), [Amazon.de](https://www.amazon.de/), [Amazon.pl](https://www.amazon.pl/), and [Tweakers Pricewatch](https://tweakers.net/monitors/), alongside other local retailers. Each recorded price should link to the exact offer used; the presence of a source does not imply every model is available there.
+To add a product, use the app's draft form, export the catalog, and publish its contents to `data/products.json` on main using the linked GitHub editor. Or ask the assistant to add exact products directly to the catalog. Until publication, drafts are device-only and are not scheduled for research. Local changes to published products also require export/publication to change automated tracking. There is no GitHub credential or silent write access in the public app.
 
-## Selecting observations
+Target prices, Planned / Shortlisted / Purchased status, and compatibility notes save in browser local storage. Export includes catalog details and targets, but not private notes or shopping status. Clearing browser storage clears local drafts and planning data. Legacy local monitor drafts are imported automatically. Imported catalogs add new product drafts; published records remain authoritative. The app never infers hardware compatibility from a note.
 
-The browser reads history; it does not search retailers. The scheduled collector must compare **all freshly checked candidate offers for each exact model and country** before appending a batch. `scripts/select-lowest.mjs` validates candidate assertions and chooses the least expensive eligible offer per pair, yielding 16 observations. An empty pair becomes unavailable with null prices. A lower exact-model Pricewatch or other local comparison listing can win with `verification: "Pricewatch-listed; retailer checkout price not independently confirmed"` or `"Comparison-listed; retailer checkout price not independently confirmed"`; the dashboard labels it as a listing that needs retailer confirmation.
+## Price history and selection
 
-Candidate input is a JSON object with `observed_at` (ISO timestamp), `fx_eur_pln`, `fx_source_url`, `fx_checked_at`, and `offers`. Each offer needs the exact `model`, `country`, `retailer`, `retailer_country`, local `original_currency` and `original_price`, `vat_included: true`, `checked_at`, and `verification`. Retailer-confirmed offers require `orderable: true` and a direct retailer `url`. A labelled comparison offer can use `orderable: null` when checkout stock is unreadable, and can use its exact-product `comparison_url` as the link when no direct retailer URL is known. Comparison offers also need the seller name exactly as shown in `comparison_seller` and `comparison_seller_country` matching the tracked country. A Belgian comparison seller cannot establish a Dutch price. A claim must be supported by the checked source; the script cannot independently inspect a web page or prove market-wide coverage. Any uncertain lower listing must be investigated before selection rather than omitted from the input.
+`data/price-history.json` retains all historical observations. Its `model` field is the product key for all categories. The app displays full history with product/category/country filters and shows one price line per visible product. Country controls determine card and chart minima; the history table has its own country filter. Unknown and invalidated prices are not plotted as real prices. Latest cards expire after ten hours; chart minima combine observations at most ten hours apart. Shipping is separate from the VAT-inclusive item price and belongs in status notes. Orderable preorders must be clearly labelled; orderability does not mean in stock.
 
-Run `node --test scripts/select-lowest.test.mjs` and then `node scripts/select-lowest.mjs candidate-batch.json --history data/price-history.json`. The command appends 16 observations to the existing array. Review the diff and commit the history. Current dashboard prices expire after two hours; historical chart points only combine country observations checked within two hours of one another.
+For every enabled catalog product, the collector checks four countries. Each normal batch contains exactly `enabled products × 4` observations (currently 16). It uses Tweakers's explicit NL and BE views, Beslist NL/BE, Idealo, Geizhals, Ceneo and reputable local retailers. Amazon.nl, Amazon.de, Amazon.pl and Amazon.com.be are researched only through search and third-party comparison sources. Do not open Amazon pages/APIs to verify prices.
 
-Historical observations with unsupported prices are retained as `invalidated_observation` audit records and have `available: false` with null prices. They do not contribute to current cards or the historical price line. The correction reason is recorded per row.
+Candidate batches need `observed_at`, `fx_eur_pln`, `fx_source_url`, `fx_checked_at`, and `offers`. Each offer needs exact `model`, `country`, `retailer`, `retailer_country`, local `original_currency`, `original_price`, `vat_included:true`, `checked_at`, `verification`, and `url`. Retailer-confirmed offers need `orderable:true`. Comparison-listed offers may have `orderable:null` with explicit uncertainty and need `comparison_url`, `comparison_seller`, and `comparison_seller_country` matching the country. The seller's actual local offer is authoritative, not the comparison site's domain.
 
-## Price evidence freshness
+Every offer also needs `evidence_type` (`live-page` or `user-screenshot`) and `source_timestamp_status` (`dated` or `not-displayed`). Copy a displayed source offer date into `source_price_at`; dated prices older than two hours fail even with a fresh retrieval timestamp. Use `not-displayed` only when the inspected live listing has no timestamp. Cached snippets are discovery leads, not current price evidence. Keep shipping, stock and preorder qualifications in `status_note`.
 
-Candidate offers must include `evidence_type` (`live-page` or `user-screenshot`) and `source_timestamp_status` (`dated` or `not-displayed`). If the source displays an offer timestamp, set `source_timestamp_status: "dated"` and copy it into `source_price_at` as ISO 8601; the selector rejects source prices older than two hours even when `checked_at` is fresh. Use `not-displayed` only after checking that the live offer has no timestamp. Cached search snippets are discovery leads, not current price evidence. Never relabel a known old source date as not displayed. Keep preorder dates and shipping qualifications in `status_note`; orderability does not mean in stock. The selector retains source evidence fields and status notes. It validates supplied evidence metadata but does not independently fetch or authenticate source pages.
+The selector validates every supplied candidate before selecting the minimum, fails on unsupported candidates, and creates null-price rows for missing pairs. It cannot independently fetch or authenticate sources; assertions must be supported by current evidence. Lower known listings must be investigated, not omitted to make a higher price appear cheapest. Polish prices are converted using the checked rate. Prior unsupported observations stay as `invalidated_observation` audit records with null active prices.
 
-## Belgium
+Run:
 
-Belgium is a separate EUR market for all four models (16 model-country pairs per scheduled run). Search Tweakers with Belgium explicitly selected and Beslist.be, plus Belgian offers from Redable.be, Alternate.be, Coolblue.be and other local retailers. Search Amazon.com.be separately through web search and third-party comparison sources only. Preserve the actual seller and Belgian storefront evidence; a Belgian seller does not establish a Dutch price. Belgian history begins with its first actual observation; do not backfill invented prices. The existing 08:00, 11:00, 14:00, 17:00, 20:00 and 23:00 Europe/Amsterdam schedule remains in place.
+```sh
+node --test scripts/select-lowest.test.mjs
+node scripts/select-lowest.mjs candidate-batch.json --history data/price-history.json
+```
+
+Scheduled checks run at 08:00, 11:00, 14:00, 17:00, 20:00 and 23:00 Europe/Amsterdam. They reread the catalog each run, preserve history and report sources and uncertainties. No sample component prices are seeded into the live data.

@@ -63,3 +63,16 @@ test('keeps Belgian and Dutch minima separate and returns 16 unique pairs', () =
   assert.equal(rows.filter(r=>r.country==='Belgium' && !r.available).length,3);
   assert.throws(()=>selectLowest(batch([{...be,comparison_seller_country:'Netherlands'}])),/country mismatch/);
 });
+
+
+test('catalog supports GPU, memory and input devices without monitor constants', () => {
+ const products=[{model:'GPU-EXACT-16GB',category:'GPU'},{model:'RAM-2X16-6000-CL30',category:'Memory'},{model:'KEYBOARD-US-RED',category:'Keyboard'},{model:'PAUSED',category:'Mouse',enabled:false}];
+ const rows=selectLowest(batch([offer({model:'RAM-2X16-6000-CL30',original_price:95})]),products);
+ assert.equal(rows.length,12);
+ assert.equal(rows.find(r=>r.available).category,'Memory');
+ assert.equal(rows.find(r=>r.available).price_eur,95);
+ assert.ok(!rows.some(r=>r.model==='PAUSED'));
+ assert.throws(()=>selectLowest(batch([offer({model:'RAM-1X16-6000-CL30'})]),products),/Unknown model/);
+ assert.throws(()=>selectLowest(batch([]),[products[0],products[0]]),/unique exact/);
+ assert.deepEqual(selectLowest(batch([]),[]),[]);
+});

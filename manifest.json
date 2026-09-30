@@ -1,12 +1,12 @@
 {
-  "name": "Philips Monitor Price Tracker",
-  "short_name": "Monitor Tracker",
+  "name": "PC Upgrade Tracker",
+  "short_name": "PC Upgrades",
   "start_url": "./",
   "scope": "./",
   "display": "standalone",
   "background_color": "#07111f",
   "theme_color": "#07111f",
-  "description": "Track Philips ultrawide monitor prices across Germany, the Netherlands, and Poland.",
+  "description": "Compare exact PC components and peripherals across Germany, Netherlands, Poland and Belgium.",
   "icons": [
     {
       "src": "icon-192.png",

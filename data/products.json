@@ -1,0 +1,42 @@
+[
+  {
+    "model": "34B2U5900C",
+    "name": "Philips 34B2U5900C",
+    "category": "Monitor",
+    "brand": "Philips",
+    "enabled": true,
+    "variant": "",
+    "target_price_eur": null,
+    "product_url": ""
+  },
+  {
+    "model": "34B2U6603CH",
+    "name": "Philips 34B2U6603CH",
+    "category": "Monitor",
+    "brand": "Philips",
+    "enabled": true,
+    "variant": "",
+    "target_price_eur": null,
+    "product_url": ""
+  },
+  {
+    "model": "34B2U5600C",
+    "name": "Philips 34B2U5600C",
+    "category": "Monitor",
+    "brand": "Philips",
+    "enabled": true,
+    "variant": "",
+    "target_price_eur": null,
+    "product_url": ""
+  },
+  {
+    "model": "34E1C5600AM",
+    "name": "Philips 34E1C5600AM",
+    "category": "Monitor",
+    "brand": "Philips",
+    "enabled": true,
+    "variant": "",
+    "target_price_eur": null,
+    "product_url": ""
+  }
+]

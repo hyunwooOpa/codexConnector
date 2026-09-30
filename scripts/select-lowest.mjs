@@ -1,8 +1,10 @@
+import { readFileSync } from 'node:fs';
 import { readFile, writeFile } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
-export const MODELS = ['34B2U5900C', '34B2U6603CH', '34B2U5600C', '34E1C5600AM'];
+export const PRODUCTS = JSON.parse(readFileSync(new URL('../data/products.json', import.meta.url), 'utf8'));
+export const MODELS = PRODUCTS.filter(p => p.enabled !== false).map(p => p.model);
 export const COUNTRIES = ['Germany', 'Netherlands', 'Poland', 'Belgium'];
 const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN', Belgium: 'EUR' };
 const MAX_AGE_MS = 2 * 60 * 60 * 1000;
@@ -12,8 +14,8 @@ function validUrl(value) {
   catch { return false; }
 }
 
-function checkedOffer(offer, now, fx) {
-  if (!MODELS.includes(offer.model) || !COUNTRIES.includes(offer.country)) throw new Error(`Unknown model/country: ${offer.model}/${offer.country}`);
+function checkedOffer(offer, now, fx, models) {
+  if (!models.includes(offer.model) || !COUNTRIES.includes(offer.country)) throw new Error(`Unknown model/country: ${offer.model}/${offer.country}`);
   if (offer.retailer_country !== offer.country) throw new Error(`Retailer country mismatch: ${offer.model}/${offer.country} at ${offer.retailer}`);
   if (!offer.retailer) throw new Error(`Missing retailer: ${offer.model}/${offer.country}`);
   if (offer.original_currency !== CURRENCY[offer.country]) throw new Error(`Wrong local currency: ${offer.model}/${offer.country}`);
@@ -39,18 +41,22 @@ function checkedOffer(offer, now, fx) {
 
 // All offers are checked before selecting any winner. An invalid lower listing must be
 // investigated, rather than silently ignored in favour of a higher retailer price.
-export function selectLowest(batch) {
+export function selectLowest(batch, products = PRODUCTS) {
+  if (!Array.isArray(products)) throw new Error('Product catalog must be an array');
+  const active = products.filter(p => p.enabled !== false);
+  const models = active.map(p => p.model);
+  if (models.some(m => typeof m !== 'string' || !m.trim()) || new Set(models).size !== models.length) throw new Error('Catalog requires unique exact model identifiers');
   const now = Date.parse(batch.observed_at);
   if (!Number.isFinite(now) || now > Date.now() + 60_000) throw new Error('Invalid observation timestamp');
   const fx = batch.fx_eur_pln;
   if (!Number.isFinite(fx) || fx <= 0 || !validUrl(batch.fx_source_url) || !Number.isFinite(Date.parse(batch.fx_checked_at)) || Math.abs(now - Date.parse(batch.fx_checked_at)) > MAX_AGE_MS) throw new Error('Current EUR/PLN rate and source are required');
   if (!Array.isArray(batch.offers)) throw new Error('Expected offers array');
-  const offers = batch.offers.map(o => checkedOffer(o, now, fx));
-  return MODELS.flatMap(model => COUNTRIES.map(country => {
+  const offers = batch.offers.map(o => checkedOffer(o, now, fx, models));
+  return models.flatMap(model => COUNTRIES.map(country => {
     const matches = offers.filter(o => o.model === model && o.country === country).sort((a, b) => a.price_eur - b.price_eur);
     const best = matches[0];
-    if (!best) return { timestamp: batch.observed_at, model, country, retailer: 'No verified local orderable offer found', original_currency: CURRENCY[country], original_price: null, price_eur: null, available: false, url: null, ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
-    return { timestamp: batch.observed_at, model, country, retailer: best.retailer, original_currency: best.original_currency, original_price: best.original_price, price_eur: best.price_eur, available: true, url: validUrl(best.url) ? best.url : best.comparison_url, verification: best.verification, evidence_type: best.evidence_type, source_timestamp_status: best.source_timestamp_status, ...(best.source_price_at ? { source_price_at: best.source_price_at } : {}), source_checked_at: best.checked_at, ...(best.comparison_url ? { comparison_url: best.comparison_url, comparison_seller: best.comparison_seller, comparison_seller_country: best.comparison_seller_country } : {}), ...(best.status_note ? { status_note: best.status_note } : best.orderable !== true ? { status_note: 'Comparison listing only; retailer stock and checkout not independently confirmed.' } : {}), ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
+    if (!best) return { timestamp: batch.observed_at, model, category: active.find(p => p.model === model).category || "Other", country, retailer: 'No verified local orderable offer found', original_currency: CURRENCY[country], original_price: null, price_eur: null, available: false, url: null, ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
+    return { timestamp: batch.observed_at, model, category: active.find(p => p.model === model).category || "Other", country, retailer: best.retailer, original_currency: best.original_currency, original_price: best.original_price, price_eur: best.price_eur, available: true, url: validUrl(best.url) ? best.url : best.comparison_url, verification: best.verification, evidence_type: best.evidence_type, source_timestamp_status: best.source_timestamp_status, ...(best.source_price_at ? { source_price_at: best.source_price_at } : {}), source_checked_at: best.checked_at, ...(best.comparison_url ? { comparison_url: best.comparison_url, comparison_seller: best.comparison_seller, comparison_seller_country: best.comparison_seller_country } : {}), ...(best.status_note ? { status_note: best.status_note } : best.orderable !== true ? { status_note: 'Comparison listing only; retailer stock and checkout not independently confirmed.' } : {}), ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
   }));
 }
 
@@ -65,9 +71,10 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
       if (historyPath) {
         const previous = JSON.parse(await readFile(historyPath, 'utf8'));
         if (!Array.isArray(previous)) throw new Error('History must be an array');
-        if (previous.some(x => x.timestamp === observations[0].timestamp && MODELS.includes(x.model) && COUNTRIES.includes(x.country))) throw new Error('Observation timestamp already exists in history; use a fresh check timestamp');
+        if (observations.length && previous.some(x => x.timestamp === observations[0].timestamp && MODELS.includes(x.model) && COUNTRIES.includes(x.country))) throw new Error('Observation timestamp already exists in history; use a fresh check timestamp');
         await writeFile(historyPath, JSON.stringify([...previous, ...observations], null, 2) + '\n');
       } else console.log(JSON.stringify(observations, null, 2));
     } catch (error) { console.error(error.message); process.exitCode = 1; }
   }
 }
+
