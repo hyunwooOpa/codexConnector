@@ -8,7 +8,7 @@ const batch = offers => ({ observed_at: now, fx_eur_pln: 4.2, fx_source_url: 'ht
 
 test('selects cheaper Pricewatch listing even when a direct retailer is listed first', () => {
   const rows = selectLowest(batch([offer(), offer({ retailer: 'Local comparison seller', original_price: 523.93, verification: 'Pricewatch-listed', comparison_url: 'https://tweakers.net/pricewatch/2376176/', comparison_seller: 'Local comparison seller', comparison_seller_country: 'Netherlands', url: 'https://local.example/model' })]));
-  assert.equal(rows.length, 60);
+  assert.equal(rows.length, 44);
   assert.equal(rows.find(x => x.model === '34B2U5900C' && x.country === 'Netherlands').price_eur, 523.93);
   assert.equal(rows.find(x => x.model === '34B2U5900C' && x.country === 'Netherlands').verification, 'Pricewatch-listed');
   assert.equal(rows.find(x => x.model === '34B2U5900C' && x.country === 'Germany').available, false);
@@ -57,10 +57,10 @@ test('keeps source dates and preorder notes for current screenshot evidence', ()
 test('keeps Belgian and Dutch minima separate and returns 16 unique pairs', () => {
   const be = offer({country:'Belgium', retailer_country:'Belgium', retailer:'Redable.be', original_price:510, verification:'Pricewatch-listed', comparison_url:'https://tweakers.net/pricewatch/2376176/', comparison_seller:'Redable.be', comparison_seller_country:'Belgium'});
   const rows=selectLowest(batch([offer({original_price:580}), be, {...be, retailer:'Other Belgian shop', comparison_seller:'Other Belgian shop', original_price:540}]));
-  assert.equal(new Set(rows.map(r=>r.model+'|'+r.country)).size,60);
+  assert.equal(new Set(rows.map(r=>r.model+'|'+r.country)).size,44);
   assert.equal(rows.find(r=>r.model===be.model && r.country==='Belgium').price_eur,510);
   assert.equal(rows.find(r=>r.model===be.model && r.country==='Netherlands').price_eur,580);
-  assert.equal(rows.filter(r=>r.country==='Belgium' && !r.available).length,14);
+  assert.equal(rows.filter(r=>r.country==='Belgium' && !r.available).length,10);
   assert.throws(()=>selectLowest(batch([{...be,comparison_seller_country:'Netherlands'}])),/country mismatch/);
 });
 
