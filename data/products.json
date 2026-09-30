@@ -54,7 +54,11 @@
     "brand": "Samsung",
     "tracking_role": "competitor",
     "deselection_reason": "Paused because it is a 3440x1440/100Hz VA alternative with lower text density than the active 5K2K shortlist and overlaps with the newer Philips/Samsung business options. It has good Eye Saver and Flicker Free features but is not the preferred programming choice.",
-    "competitor_of": ["34B2U6603CH", "34E1C5600AM", "34B2U5600C"],
+    "competitor_of": [
+      "34B2U6603CH",
+      "34E1C5600AM",
+      "34B2U5600C"
+    ],
     "competitor_reason": "34-inch business ultrawide with webcam, USB-C and RJ45",
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
@@ -71,7 +75,10 @@
     "brand": "Dell",
     "tracking_role": "competitor",
     "deselection_reason": "Paused because it is a 3440x1440 business monitor rather than 5K2K. Its webcam and eye-comfort features are useful, but the active list prioritizes sharper text and programming density; it remains a valid office alternative.",
-    "competitor_of": ["34B2U6603CH", "34E1C5600AM"],
+    "competitor_of": [
+      "34B2U6603CH",
+      "34E1C5600AM"
+    ],
     "competitor_reason": "34-inch business ultrawide with webcam and USB-C",
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
@@ -89,7 +96,10 @@
     "brand": "Dell",
     "tracking_role": "competitor",
     "deselection_reason": "Paused because it is the older 3440x1440 Dell conferencing generation, with lower text density and less future-proof performance than the active 5K2K/120Hz candidates. Historical data is retained.",
-    "competitor_of": ["34B2U6603CH", "34E1C5600AM"],
+    "competitor_of": [
+      "34B2U6603CH",
+      "34E1C5600AM"
+    ],
     "competitor_reason": "34-inch business ultrawide with webcam and USB-C",
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
@@ -105,7 +115,10 @@
     "category": "Monitor",
     "brand": "LG",
     "tracking_role": "competitor",
-    "competitor_of": ["34B2U5600C", "34B2U6603CH"],
+    "competitor_of": [
+      "34B2U5600C",
+      "34B2U6603CH"
+    ],
     "competitor_reason": "34-inch USB-C/RJ45 business ultrawide",
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
@@ -122,7 +135,10 @@
     "brand": "AOC",
     "tracking_role": "competitor",
     "deselection_reason": "Paused because independent evidence for long-duration flicker/PWM behaviour and current local availability was weaker than for the active Philips, Dell, LG and ASUS candidates. It also remains 3440x1440 rather than 5K2K.",
-    "competitor_of": ["34B2U5600C", "34E1C5600AM"],
+    "competitor_of": [
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
     "competitor_reason": "34-inch ultrawide with webcam and USB-C",
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
@@ -138,7 +154,10 @@
     "brand": "iiyama",
     "tracking_role": "competitor",
     "deselection_reason": "Paused because its eye-comfort and PWM evidence was less complete, and its 3440x1440 resolution offers lower programming text density than the active 5K2K shortlist. This is a prioritization decision, not a claim that the monitor is unusable.",
-    "competitor_of": ["34B2U6603CH", "34E1C5600AM"],
+    "competitor_of": [
+      "34B2U6603CH",
+      "34E1C5600AM"
+    ],
     "competitor_reason": "34-inch business ultrawide with webcam and USB-C",
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
@@ -153,7 +172,11 @@
     "category": "Monitor",
     "brand": "Dell",
     "tracking_role": "competitor",
-    "competitor_of": ["34B2U5900C", "34B2U6603CH", "34B2U5600C"],
+    "competitor_of": [
+      "34B2U5900C",
+      "34B2U6603CH",
+      "34B2U5600C"
+    ],
     "competitor_reason": "34-inch curved IPS Black ultrawide, 3440x1440 at 120Hz, Thunderbolt 4 and 5-Star Eye Comfort",
     "discovery_source_url": "https://www.dell.com/nl-nl/shop/dell-ultrasharp-34-gebogen-thunderbolt-hubmonitor-u3425we/apd/210-bmdw/monitoren-monitoraccessoires",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
@@ -168,7 +191,11 @@
     "category": "Monitor",
     "brand": "ASUS",
     "tracking_role": "competitor",
-    "competitor_of": ["34B2U5900C", "34B2U6603CH", "34B2U5600C"],
+    "competitor_of": [
+      "34B2U5900C",
+      "34B2U6603CH",
+      "34B2U5600C"
+    ],
     "competitor_reason": "34-inch curved IPS ultrawide, 3440x1440 at 120Hz, TÜV Flicker-free and Low Blue Light",
     "discovery_source_url": "https://www.asus.com/nl/displays-desktops/monitors/proart/proart-display-pa348cgv/techspec/",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
@@ -184,7 +211,11 @@
     "category": "Monitor",
     "brand": "Dell",
     "tracking_role": "competitor",
-    "competitor_of": ["34B2U6603CH", "34B2U5600C", "34E1C5600AM"],
+    "competitor_of": [
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
     "competitor_reason": "34-inch curved IPS business ultrawide with 3440x1440, USB-C and ergonomic stand",
     "discovery_source_url": "https://www.itpro.com/hardware/monitors/dell-pro-34-plus-p3425we-monitor-review-ultra-wide-ultra-sensible",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
@@ -199,7 +230,11 @@
     "category": "Monitor",
     "brand": "Lenovo",
     "tracking_role": "competitor",
-    "competitor_of": ["34B2U6603CH", "34B2U5600C", "34E1C5600AM"],
+    "competitor_of": [
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
     "competitor_reason": "34-inch curved VA ultrawide, 3440x1440 with variable 48-120Hz and 100W USB-C",
     "discovery_source_url": "https://support.lenovo.com/cg/nl/solutions/pd500793-thinkvision-t34wd-40-overview",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
@@ -215,7 +250,11 @@
     "brand": "Samsung",
     "tracking_role": "competitor",
     "deselection_reason": "Paused because it is an older 3440x1440/100Hz VA model with similar eye-care features to the S65VC but lower text density and weaker current-market availability. Keeping both would duplicate the same comparison category.",
-    "competitor_of": ["34B2U6603CH", "34B2U5600C", "34E1C5600AM"],
+    "competitor_of": [
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
     "competitor_reason": "34-inch curved VA ultrawide, 3440x1440 at 100Hz with TÜV Intelligent Eye Care",
     "discovery_source_url": "https://www.samsung.com/nl/monitors/high-resolution/s65ua-34-inch-ls34a650ubuxen/",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
@@ -230,7 +269,9 @@
     "category": "Monitor",
     "brand": "LG",
     "tracking_role": "competitor",
-    "competitor_of": ["34B2U5900C"],
+    "competitor_of": [
+      "34B2U5900C"
+    ],
     "competitor_reason": "34-inch 5120x2160 Nano IPS ultrawide with Flicker Safe, Reader Mode and USB-C/Thunderbolt",
     "discovery_source_url": "https://www.lg.com/us/monitors/lg-34wk95u-w-ultrawide-monitor",
     "discovery_checked_at": "2026-09-30T11:20:00+02:00",
@@ -245,7 +286,9 @@
     "category": "Monitor",
     "brand": "MSI",
     "tracking_role": "competitor",
-    "competitor_of": ["34B2U5900C"],
+    "competitor_of": [
+      "34B2U5900C"
+    ],
     "competitor_reason": "34-inch 5120x2160 Nano IPS ultrawide with Anti-Flicker, Less Blue Light and USB-C",
     "discovery_source_url": "https://www.msi.com/Monitor/Prestige-PS341WU",
     "discovery_checked_at": "2026-09-30T11:20:00+02:00",
@@ -253,5 +296,20 @@
     "variant": "PS341WU",
     "target_price_eur": null,
     "product_url": ""
+  },
+  {
+    "model": "G507T-16V3C",
+    "name": "MSI GeForce RTX 5070 Ti 16G VENTUS 3X OC",
+    "category": "GPU",
+    "brand": "MSI",
+    "tracking_role": "primary",
+    "competitor_of": [],
+    "enabled": true,
+    "variant": "G507T-16V3C; VENTUS 3X OC; 16GB GDDR7; exclude non-OC, OC PLUS, SHADOW and GAMING TRIO",
+    "manufacturer_part_number": "G507T-16V3C",
+    "target_price_eur": null,
+    "product_url": "https://www.msi.com/Graphics-Card/GeForce-RTX-5070-Ti-16G-VENTUS-3X-OC/Specification",
+    "comparison_url": "https://tweakers.net/pricewatch/2176414/msi-geforce-rtx-5070-ti-16g-ventus-3x-oc.html",
+    "selection_note": "Specific RTX 5070 Ti variant selected for shared tracking at user request. Browser-only generic drafts are not automatically merged into this exact SKU."
   }
 ]
