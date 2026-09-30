@@ -10,7 +10,7 @@ const safeUrl=v=>/^https?:\/\//i.test(v||'')?v:null;
 function saved(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
 let catalog=[],observations=[],drafts=saved(KEY,[]),shopping=saved(STATE,{}),chart;
 let days='30';
-function products(){return [...catalog,...drafts.filter(d=>!catalog.some(p=>p.model===d.model))].map(p=>({...p,...(shopping[p.model]?.catalog||{})}))}
+function products(){return [...catalog,...drafts.filter(d=>!catalog.some(p=>p.model===d.model))].filter(p=>!shopping[p.model]?.removed).map(p=>({...p,...(shopping[p.model]?.catalog||{})}))}
 function metadata(model){return products().find(p=>p.model===model)||{model,name:model,category:'Other'}}
 function localState(p){return shopping[p.model]||{status:'Planned',target:p.target_price_eur??null,notes:''}}
 function isDraft(p){return !catalog.some(x=>x.model===p.model)}
@@ -21,9 +21,21 @@ function selectedCountries(){return [...document.querySelectorAll('[data-country
 function best(model){return selectedCountries().map(c=>latest(model,c)).filter(eligible).sort((a,b)=>a.price_eur-b.price_eur)[0]}
 function color(model){let h=0;for(const c of model)h=(h*31+c.charCodeAt(0))>>>0;return `hsl(${h%360} 75% 65%)`}
 function renderCards(){const shown=visibleProducts();$('overview').innerHTML=shown.map(p=>{const b=best(p.model),s=localState(p),draft=isDraft(p),role=p.tracking_role||'primary',links=(p.competitor_of||[]).map(id=>metadata(id).name||id);return `<article class="monitor-card"><span class="category-tag">${role==='competitor'?'Competitor':'Primary'} · ${esc(p.category)} · ${esc(s.status)}</span><h3>${esc(p.name||p.model)}</h3><p class="muted">${esc(p.model)}${p.variant?' · '+esc(p.variant):''}</p>${role==='competitor'?`<p class="muted">Compared with: ${esc(links.join(', ')||'selected primary products')}${p.competitor_reason?' · '+esc(p.competitor_reason):''}</p>`:''}<span class="price-badge">${draft?'Device-only draft':p.enabled===false?'Tracking paused':b?(/listed/.test(b.verification)?'Lowest listed price':'Lowest checked price'):'Awaiting price check'}</span><div class="price">${eur(b?.price_eur)}</div><p>${b?esc(b.retailer)+' · '+FLAGS[b.country]:draft?'Publish the catalog to start scheduled checks.':'No current price in selected countries.'}</p>${b?`<p class="muted">${esc(date(b.timestamp))}${b.availability_status==='preorder'?' · Preorder':''}</p>`:''}${s.target!=null?`<p class="target">Target ${eur(s.target)}${b?(b.price_eur<=s.target?' · Target reached':' · '+eur(b.price_eur-s.target)+' above target'):''}</p>`:''}<div class="country-list">${selectedCountries().map(c=>{const o=latest(p.model,c);return `<div class="country-row"><span>${FLAGS[c]} ${c}</span><strong>${eligible(o)?eur(o.price_eur):'—'}</strong></div>`}).join('')}</div><button class="card-btn" data-details="${esc(p.model)}">Price history & sources →</button>${s.notes?`<details><summary>Shopping notes</summary>${esc(s.notes)}</details>`:''}<button class="card-btn" data-edit="${esc(p.model)}">Shopping details</button>${draft?`<button class="card-btn" data-remove="${esc(p.model)}">Remove draft</button>`:''}</article>`}).join('')||'<div class="panel empty">No products match these filters. Add an exact product below.</div>';
+ document.querySelectorAll('[data-remove]').forEach(b=>b.textContent='Remove from list');
  document.querySelectorAll('[data-details]').forEach(b=>b.onclick=()=>{$('tableModel').value=b.dataset.details;renderTable();$('prices').scrollIntoView()});
  document.querySelectorAll('[data-edit]').forEach(b=>b.onclick=()=>editProduct(b.dataset.edit));
- document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>{drafts=drafts.filter(p=>p.model!==b.dataset.remove);delete shopping[b.dataset.remove];persist();renderOptions();render()});
+ document.querySelectorAll('[data-remove]').forEach(b=>b.onclick=()=>removeProduct(b.dataset.remove));
+ document.querySelectorAll('#overview article.monitor-card').forEach(card=>{
+  if(card.querySelector('[data-remove]'))return;
+  const edit=card.querySelector('[data-edit]');
+  if(!edit)return;
+  const button=document.createElement('button');
+  button.className='card-btn remove-btn';
+  button.dataset.remove=edit.dataset.edit;
+  button.textContent='Remove from list';
+  button.onclick=()=>removeProduct(button.dataset.remove);
+  card.appendChild(button);
+ });
  $('trackedCount').textContent=catalog.filter(p=>p.enabled!==false).length;
  $('draftCount').textContent=products().filter(isDraft).length;
  const reached=shown.filter(p=>{const t=localState(p).target,b=best(p.model);return t!=null&&b&&b.price_eur<=t});$('targetCount').textContent=reached.length;
@@ -39,6 +51,17 @@ function message(text){$('formMessage').textContent=text}
 function editProduct(model){const p=metadata(model),s=localState(p);$('editing').value=model;$('newModel').value=p.model;$('newModel').readOnly=true;$('newName').value=p.name||p.model;$('newBrand').value=p.brand||'';$('newCategory').value=p.category||'Other';$('newVariant').value=p.variant||'';$('newUrl').value=p.product_url||'';$('newTarget').value=s.target??'';$('newStatus').value=s.status;$('newNotes').value=s.notes||'';$('newEnabled').checked=p.enabled!==false;$('saveProduct').textContent='Save shopping details';message(isDraft(p)?'Editing a device-only draft.':'Shopping details save on this device. Product changes are included when you export the catalog.');$('manage').scrollIntoView()}
 function resetForm(){$('productForm').reset();$('editing').value='';$('newModel').readOnly=false;$('newEnabled').checked=true;$('saveProduct').textContent='Add product draft'}
 function persist(){localStorage.setItem(KEY,JSON.stringify(drafts));localStorage.setItem(STATE,JSON.stringify(shopping))}
+function removeProduct(model){
+ const p=metadata(model);
+ if(!p||!confirm(`Remove ${p.name||model} from the tracking list?`))return;
+ drafts=drafts.filter(x=>x.model!==model);
+ if(catalog.some(x=>x.model===model)) shopping[model]={...(shopping[model]||{}),removed:true};
+ else delete shopping[model];
+ persist();
+ renderOptions();
+ render();
+ message(`${p.name||model} was removed from this list. Publish the exported catalog to stop scheduled tracking.`);
+}
 function exportCatalog(){const out=products().map(p=>({...p,...(shopping[p.model]?.catalog||{}),target_price_eur:localState(p).target}));const url=URL.createObjectURL(new Blob([JSON.stringify(out,null,2)+'\n'],{type:'application/json'}));const a=document.createElement('a');a.href=url;a.download='products.json';a.click();URL.revokeObjectURL(url);message('Exported products.json. Publish it to the GitHub catalog to enable scheduled checks on all devices.')}
 $('productForm').onsubmit=e=>{e.preventDefault();const model=$('newModel').value.trim(),editing=$('editing').value;if(!editing&&products().some(p=>p.model===model)){message('That exact model is already in your list. Use Shopping details on its card.');return}const p={model,name:$('newName').value.trim()||model,brand:$('newBrand').value.trim(),category:$('newCategory').value,variant:$('newVariant').value.trim(),product_url:$('newUrl').value.trim(),enabled:$('newEnabled').checked};const target=$('newTarget').value===''?null:Number($('newTarget').value);if(!model||target!==null&&(!Number.isFinite(target)||target<0)||p.product_url&&!safeUrl(p.product_url)){message('Enter an exact model, valid target price and an HTTP(S) product URL.');return}if(!catalog.some(x=>x.model===model)){drafts=drafts.filter(x=>x.model!==model);drafts.push({...p,target_price_eur:target})}shopping[model]={status:$('newStatus').value,target,notes:$('newNotes').value.trim(),catalog:p};persist();renderOptions();render();resetForm();message('Saved on this device. Export and publish the catalog to start or change scheduled tracking.')};
 $('cancelEdit').onclick=()=>{resetForm();message('')};$('exportCatalog').onclick=exportCatalog;
