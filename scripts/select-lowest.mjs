@@ -20,6 +20,13 @@ function checkedOffer(offer, now, fx) {
   if (!Number.isFinite(offer.original_price) || offer.original_price <= 0) throw new Error(`Invalid price: ${offer.model}/${offer.country}`);
   const listed = /^(Pricewatch|Comparison)-listed/.test(offer.verification || '');
   if (offer.vat_included !== true || (!listed && offer.orderable !== true) || (listed && offer.orderable === false)) throw new Error(`VAT/orderability unverified: ${offer.model}/${offer.country} at ${offer.retailer}`);
+  // A fresh retrieval time must not disguise an old embedded offer timestamp.
+  if (!['live-page', 'user-screenshot'].includes(offer.evidence_type)) throw new Error('Missing live price evidence type');
+  if (!['dated', 'not-displayed'].includes(offer.source_timestamp_status)) throw new Error('Missing source timestamp status');
+  if (offer.source_timestamp_status === 'dated' || offer.source_price_at != null) {
+    const sourceTime = Date.parse(offer.source_price_at);
+    if (!Number.isFinite(sourceTime) || sourceTime > now + 60_000 || now - sourceTime > MAX_AGE_MS) throw new Error('Stale or invalid source price timestamp');
+  }
   const seen = Date.parse(offer.checked_at);
   if (!Number.isFinite(seen) || seen > now + 60_000 || now - seen > MAX_AGE_MS) throw new Error(`Stale or invalid check: ${offer.model}/${offer.country} at ${offer.retailer}`);
   if (offer.verification !== 'retailer-confirmed' && !listed) throw new Error(`Unknown verification: ${offer.model}/${offer.country}`);
@@ -43,7 +50,7 @@ export function selectLowest(batch) {
     const matches = offers.filter(o => o.model === model && o.country === country).sort((a, b) => a.price_eur - b.price_eur);
     const best = matches[0];
     if (!best) return { timestamp: batch.observed_at, model, country, retailer: 'No verified local orderable offer found', original_currency: CURRENCY[country], original_price: null, price_eur: null, available: false, url: null, ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
-    return { timestamp: batch.observed_at, model, country, retailer: best.retailer, original_currency: best.original_currency, original_price: best.original_price, price_eur: best.price_eur, available: true, url: validUrl(best.url) ? best.url : best.comparison_url, verification: best.verification, ...(best.comparison_url ? { comparison_url: best.comparison_url, comparison_seller: best.comparison_seller, comparison_seller_country: best.comparison_seller_country } : {}), ...(best.orderable !== true ? { status_note: 'Comparison listing only; retailer stock and checkout not independently confirmed.' } : {}), ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
+    return { timestamp: batch.observed_at, model, country, retailer: best.retailer, original_currency: best.original_currency, original_price: best.original_price, price_eur: best.price_eur, available: true, url: validUrl(best.url) ? best.url : best.comparison_url, verification: best.verification, evidence_type: best.evidence_type, source_timestamp_status: best.source_timestamp_status, ...(best.source_price_at ? { source_price_at: best.source_price_at } : {}), source_checked_at: best.checked_at, ...(best.comparison_url ? { comparison_url: best.comparison_url, comparison_seller: best.comparison_seller, comparison_seller_country: best.comparison_seller_country } : {}), ...(best.status_note ? { status_note: best.status_note } : best.orderable !== true ? { status_note: 'Comparison listing only; retailer stock and checkout not independently confirmed.' } : {}), ...(country === 'Poland' ? { fx_eur_pln: fx } : {}) };
   }));
 }
 
