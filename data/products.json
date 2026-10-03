@@ -206,6 +206,25 @@
     "product_url": ""
   },
   {
+    "model": "P3426WEV",
+    "name": "Dell Pro P 34 USB-C Hub Webcam Monitor P3426WEV",
+    "category": "Monitor",
+    "brand": "Dell",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "34B2U5900C",
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
+    "competitor_reason": "34.1-inch curved IPS business ultrawide, 3440x1440 at 100Hz, integrated webcam, USB-C hub and Dell eye-comfort features",
+    "enabled": true,
+    "variant": "P3426WEV; manufacturer part RP34H; 34.1-inch; 3440x1440; 100Hz; IPS; integrated webcam",
+    "manufacturer_part_number": "RP34H",
+    "target_price_eur": null,
+    "product_url": "https://www.dell.com/nl-nl/shop/monitors/apd/dell-pro-p-34-usb-c-hubmonitor-met-webcam-p3426wev/p3426wev/-"
+  },
+  {
     "model": "P3425WE",
     "name": "Dell Pro 34 Plus P3425WE",
     "category": "Monitor",
