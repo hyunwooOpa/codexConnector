@@ -10876,5 +10876,101 @@
     "evidence_type": "live-page",
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-10-03T12:09:46.574Z"
+  },
+  {
+    "timestamp": "2026-10-03T14:56:34.976Z",
+    "model": "P3426WEV",
+    "category": "Monitor",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "34B2U5900C",
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
+    "country": "Germany",
+    "retailer": "Dell Germany",
+    "original_currency": "EUR",
+    "original_price": 574.05,
+    "price_eur": 574.05,
+    "available": true,
+    "url": "https://www.dell.com/de-de/shop/business/sac/monitors/professional-monitors/appref%3Dintegrated-webcam-features",
+    "verification": "retailer-confirmed",
+    "evidence_type": "live-page",
+    "source_timestamp_status": "not-displayed",
+    "source_checked_at": "2026-10-03T14:56:34.976Z",
+    "status_note": "Dell Germany exact P3426WEV listing; VAT-inclusive price shown with current 10% discount; add-to-cart/details available; lower than the older indexed Idealo offer."
+  },
+  {
+    "timestamp": "2026-10-03T14:56:34.976Z",
+    "model": "P3426WEV",
+    "category": "Monitor",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "34B2U5900C",
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
+    "country": "Netherlands",
+    "retailer": "Dell Netherlands",
+    "original_currency": "EUR",
+    "original_price": 583.7,
+    "price_eur": 583.7,
+    "available": true,
+    "url": "https://www.dell.com/nl-nl/shop/computer-monitors/ar/all-monitors/appref%3Ddell-pro-p-product-line",
+    "verification": "retailer-confirmed",
+    "evidence_type": "live-page",
+    "source_timestamp_status": "not-displayed",
+    "source_checked_at": "2026-10-03T14:56:34.976Z",
+    "status_note": "Dell Netherlands exact P3426WEV listing; VAT-inclusive discounted price shown; stock status available and add-to-cart shown."
+  },
+  {
+    "timestamp": "2026-10-03T14:56:34.976Z",
+    "model": "P3426WEV",
+    "category": "Monitor",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "34B2U5900C",
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
+    "country": "Poland",
+    "retailer": "No verified local orderable offer found",
+    "original_currency": "PLN",
+    "original_price": null,
+    "price_eur": null,
+    "available": false,
+    "url": null,
+    "evidence_type": "live-page",
+    "source_timestamp_status": "not-displayed",
+    "source_checked_at": "2026-10-03T14:56:34.976Z",
+    "status_note": "Dell Poland exact P3426WEV page was found, but no fresh VAT-inclusive local price was displayed in the current evidence; no lower exact-model Polish offer with sufficient current seller/price/orderability evidence was verified.",
+    "fx_eur_pln": 4.3775
+  },
+  {
+    "timestamp": "2026-10-03T14:56:34.976Z",
+    "model": "P3426WEV",
+    "category": "Monitor",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "34B2U5900C",
+      "34B2U6603CH",
+      "34B2U5600C",
+      "34E1C5600AM"
+    ],
+    "country": "Belgium",
+    "retailer": "Dell Belgium",
+    "original_currency": "EUR",
+    "original_price": 585.41,
+    "price_eur": 585.41,
+    "available": true,
+    "url": "https://www.dell.com/nl-be/shop/professioneel/sac/monitors/professional-monitors/appref%3D401-1000-price",
+    "verification": "retailer-confirmed",
+    "evidence_type": "live-page",
+    "source_timestamp_status": "not-displayed",
+    "source_checked_at": "2026-10-03T14:56:34.976Z",
+    "status_note": "Dell Belgium exact P3426WEV listing; VAT-inclusive price shown with current 10% discount and add-to-cart shown."
   }
 ]
