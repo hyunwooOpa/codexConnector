@@ -48,27 +48,6 @@
     "product_url": ""
   },
   {
-    "model": "S65VC",
-    "name": "Samsung ViewFinity S6 S65VC 34\"",
-    "category": "Monitor",
-    "brand": "Samsung",
-    "tracking_role": "competitor",
-    "deselection_reason": "Paused because it is a 3440x1440/100Hz VA alternative with lower text density than the active 5K2K shortlist and overlaps with the newer Philips/Samsung business options. It has good Eye Saver and Flicker Free features but is not the preferred programming choice.",
-    "competitor_of": [
-      "34B2U6603CH",
-      "34E1C5600AM",
-      "34B2U5600C"
-    ],
-    "competitor_reason": "34-inch business ultrawide with webcam, USB-C and RJ45",
-    "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
-    "discovery_checked_at": "2026-09-30T08:00:00+02:00",
-    "discovery_price_eur": 339,
-    "enabled": false,
-    "variant": "S65VC",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
     "model": "P3426WEB",
     "name": "Dell Pro P P3426WEB 34.1\"",
     "category": "Monitor",
@@ -86,26 +65,6 @@
     "enabled": true,
     "reselection_reason": "Restored to the watch list as the strongest of the previously paused alternatives: newer business platform, 100Hz productivity refresh, USB-C hub, webcam, ergonomic adjustment and documented flicker-free eye-comfort features. It remains below the €800 ceiling; its 3440x1440 resolution is the main trade-off versus the active 5K2K models.",
     "variant": "P3426WEB",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
-    "model": "P3424WEB",
-    "name": "Dell P3424WEB 34.1\"",
-    "category": "Monitor",
-    "brand": "Dell",
-    "tracking_role": "competitor",
-    "deselection_reason": "Paused because it is the older 3440x1440 Dell conferencing generation, with lower text density and less future-proof performance than the active 5K2K/120Hz candidates. Historical data is retained.",
-    "competitor_of": [
-      "34B2U6603CH",
-      "34E1C5600AM"
-    ],
-    "competitor_reason": "34-inch business ultrawide with webcam and USB-C",
-    "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
-    "discovery_checked_at": "2026-09-30T08:00:00+02:00",
-    "discovery_price_eur": 649,
-    "enabled": false,
-    "variant": "P3424WEB",
     "target_price_eur": null,
     "product_url": ""
   },
@@ -129,44 +88,6 @@
     "product_url": ""
   },
   {
-    "model": "CU34E4CW",
-    "name": "AOC CU34E4CW 34\"",
-    "category": "Monitor",
-    "brand": "AOC",
-    "tracking_role": "competitor",
-    "deselection_reason": "Paused because independent evidence for long-duration flicker/PWM behaviour and current local availability was weaker than for the active Philips, Dell, LG and ASUS candidates. It also remains 3440x1440 rather than 5K2K.",
-    "competitor_of": [
-      "34B2U5600C",
-      "34E1C5600AM"
-    ],
-    "competitor_reason": "34-inch ultrawide with webcam and USB-C",
-    "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
-    "discovery_checked_at": "2026-09-30T08:00:00+02:00",
-    "enabled": false,
-    "variant": "CU34E4CW",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
-    "model": "XCB3497WQSNPH-B1",
-    "name": "iiyama ProLite XCB3497WQSNPH-B1",
-    "category": "Monitor",
-    "brand": "iiyama",
-    "tracking_role": "competitor",
-    "deselection_reason": "Paused because its eye-comfort and PWM evidence was less complete, and its 3440x1440 resolution offers lower programming text density than the active 5K2K shortlist. This is a prioritization decision, not a claim that the monitor is unusable.",
-    "competitor_of": [
-      "34B2U6603CH",
-      "34E1C5600AM"
-    ],
-    "competitor_reason": "34-inch business ultrawide with webcam and USB-C",
-    "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
-    "discovery_checked_at": "2026-09-30T08:00:00+02:00",
-    "enabled": false,
-    "variant": "XCB3497WQSNPH-B1",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
     "model": "U3425WE",
     "name": "Dell UltraSharp U3425WE 34\"",
     "category": "Monitor",
@@ -182,26 +103,6 @@
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
     "enabled": true,
     "variant": "U3425WE",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
-    "model": "PA348CGV",
-    "name": "ASUS ProArt Display PA348CGV 34\"",
-    "category": "Monitor",
-    "brand": "ASUS",
-    "tracking_role": "competitor",
-    "competitor_of": [
-      "34B2U5900C",
-      "34B2U6603CH",
-      "34B2U5600C"
-    ],
-    "competitor_reason": "34-inch curved IPS ultrawide, 3440x1440 at 120Hz, TÜV Flicker-free and Low Blue Light",
-    "discovery_source_url": "https://www.asus.com/nl/displays-desktops/monitors/proart/proart-display-pa348cgv/techspec/",
-    "discovery_checked_at": "2026-09-30T11:00:00+02:00",
-    "enabled": false,
-    "deselection_reason": "Paused by €800 gross-price ceiling: current Dutch retailer listings were €860.30–€891.76 incl. VAT. No longer included in scheduled checks; history is preserved.",
-    "variant": "PA348CGV",
     "target_price_eur": null,
     "product_url": ""
   },
