@@ -283,40 +283,6 @@
     "product_url": ""
   },
   {
-    "model": "34WK95U-W",
-    "name": "LG 34WK95U-W 34\" UltraWide 5K2K",
-    "category": "Monitor",
-    "brand": "LG",
-    "tracking_role": "competitor",
-    "competitor_of": [
-      "34B2U5900C"
-    ],
-    "competitor_reason": "34-inch 5120x2160 Nano IPS ultrawide with Flicker Safe, Reader Mode and USB-C/Thunderbolt",
-    "discovery_source_url": "https://www.lg.com/us/monitors/lg-34wk95u-w-ultrawide-monitor",
-    "discovery_checked_at": "2026-09-30T11:20:00+02:00",
-    "enabled": true,
-    "variant": "34WK95U-W",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
-    "model": "PS341WU",
-    "name": "MSI Prestige PS341WU 34\" 5K2K",
-    "category": "Monitor",
-    "brand": "MSI",
-    "tracking_role": "competitor",
-    "competitor_of": [
-      "34B2U5900C"
-    ],
-    "competitor_reason": "34-inch 5120x2160 Nano IPS ultrawide with Anti-Flicker, Less Blue Light and USB-C",
-    "discovery_source_url": "https://www.msi.com/Monitor/Prestige-PS341WU",
-    "discovery_checked_at": "2026-09-30T11:20:00+02:00",
-    "enabled": true,
-    "variant": "PS341WU",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
     "model": "G507T-16V3C",
     "name": "MSI GeForce RTX 5070 Ti 16G VENTUS 3X OC",
     "category": "GPU",
