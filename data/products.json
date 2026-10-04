@@ -263,26 +263,6 @@
     "product_url": ""
   },
   {
-    "model": "S65UA",
-    "name": "Samsung ViewFinity S6 S65UA 34\"",
-    "category": "Monitor",
-    "brand": "Samsung",
-    "tracking_role": "competitor",
-    "deselection_reason": "Paused because it is an older 3440x1440/100Hz VA model with similar eye-care features to the S65VC but lower text density and weaker current-market availability. Keeping both would duplicate the same comparison category.",
-    "competitor_of": [
-      "34B2U6603CH",
-      "34B2U5600C",
-      "34E1C5600AM"
-    ],
-    "competitor_reason": "34-inch curved VA ultrawide, 3440x1440 at 100Hz with TÜV Intelligent Eye Care",
-    "discovery_source_url": "https://www.samsung.com/nl/monitors/high-resolution/s65ua-34-inch-ls34a650ubuxen/",
-    "discovery_checked_at": "2026-09-30T11:00:00+02:00",
-    "enabled": false,
-    "variant": "LS34A650UBUXEN",
-    "target_price_eur": null,
-    "product_url": ""
-  },
-  {
     "model": "G507T-16V3C",
     "name": "MSI GeForce RTX 5070 Ti 16G VENTUS 3X OC",
     "category": "GPU",
