@@ -1,0 +1,36 @@
+[
+  {
+    "timestamp": "2026-10-06T22:44:00+02:00",
+    "model": "AU1003501",
+    "category": "Home & Living",
+    "country": "Netherlands",
+    "retailer": "bol.com / LifeGoods Group",
+    "original_currency": "EUR",
+    "original_price": 77.99,
+    "price_eur": 77.99,
+    "available": true,
+    "url": "https://www.bol.com/nl/nl/p/auronic-elektrische-deken-warmtedeken-3-warmtestanden-2-persoons-bovendeken-rabbit-fur-200-x-180-cm-taupe/9300000237286414/",
+    "verification": "retailer-confirmed",
+    "evidence_type": "live-page",
+    "source_timestamp_status": "not-displayed",
+    "source_checked_at": "2026-10-06T22:44:00+02:00",
+    "status_note": "Exact MPN AU1003501 / EAN 8721055567776. In stock; shipping included; sold by LifeGoods Group via bol.com."
+  },
+  {
+    "timestamp": "2026-10-06T22:44:00+02:00",
+    "model": "AU1003501",
+    "category": "Home & Living",
+    "country": "Germany",
+    "retailer": "Kaufland.de / LifeGoods-Group-BV",
+    "original_currency": "EUR",
+    "original_price": 89.99,
+    "price_eur": 89.99,
+    "available": true,
+    "url": "https://www.kaufland.de/product/550326464/",
+    "verification": "retailer-confirmed",
+    "evidence_type": "live-page",
+    "source_timestamp_status": "not-displayed",
+    "source_checked_at": "2026-10-06T22:44:00+02:00",
+    "status_note": "Exact MPN AU1003501 / EAN 8721055567776. VAT included; free shipping; sold by LifeGoods-Group-BV; delivery shown 8–9 October."
+  }
+]
