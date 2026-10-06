@@ -5,8 +5,8 @@ import { pathToFileURL } from 'node:url';
 
 export const PRODUCTS = JSON.parse(readFileSync(new URL('../data/products.json', import.meta.url), 'utf8'));
 export const MODELS = PRODUCTS.filter(p => p.enabled !== false).map(p => p.model);
-export const COUNTRIES = ['Germany', 'Netherlands', 'Poland', 'Belgium'];
-const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN', Belgium: 'EUR' };
+export const COUNTRIES = ['Germany', 'Netherlands', 'Poland'];
+const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN' };
 const MAX_AGE_MS = 2 * 60 * 60 * 1000;
 
 function validUrl(value) {
@@ -22,7 +22,6 @@ function checkedOffer(offer, now, fx, models) {
   if (!Number.isFinite(offer.original_price) || offer.original_price <= 0) throw new Error(`Invalid price: ${offer.model}/${offer.country}`);
   const listed = /^(Pricewatch|Comparison)-listed/.test(offer.verification || '');
   if (offer.vat_included !== true || (!listed && offer.orderable !== true) || (listed && offer.orderable === false)) throw new Error(`VAT/orderability unverified: ${offer.model}/${offer.country} at ${offer.retailer}`);
-  // A fresh retrieval time must not disguise an old embedded offer timestamp.
   if (!['live-page', 'user-screenshot'].includes(offer.evidence_type)) throw new Error('Missing live price evidence type');
   if (!['dated', 'not-displayed'].includes(offer.source_timestamp_status)) throw new Error('Missing source timestamp status');
   if (offer.source_timestamp_status === 'dated' || offer.source_price_at != null) {
@@ -39,8 +38,6 @@ function checkedOffer(offer, now, fx, models) {
   return { ...offer, price_eur };
 }
 
-// All offers are checked before selecting any winner. An invalid lower listing must be
-// investigated, rather than silently ignored in favour of a higher retailer price.
 export function selectLowest(batch, products = PRODUCTS) {
   if (!Array.isArray(products)) throw new Error('Product catalog must be an array');
   const active = products.filter(p => p.enabled !== false);
