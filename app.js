@@ -1,6 +1,6 @@
-const COUNTRIES=['Germany','Netherlands','Poland','Belgium'];
+const COUNTRIES=['Germany','Netherlands','Poland'];
 const CATEGORIES=['Monitor','GPU','Memory','CPU','Motherboard','Storage','Power supply','Case','Cooling','Keyboard','Mouse','Controller','Webcam','Audio','Networking','Accessories','Other'];
-const FLAGS={Germany:'🇩🇪',Netherlands:'🇳🇱',Poland:'🇵🇱',Belgium:'🇧🇪'};
+const FLAGS={Germany:'🇩🇪',Netherlands:'🇳🇱',Poland:'🇵🇱'};
 const KEY='pcUpgradeDraftsV1', STATE='pcUpgradeShoppingV1', MANUAL='pcUpgradeManualPricesV1', MAX_AGE=10*3600000;
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
