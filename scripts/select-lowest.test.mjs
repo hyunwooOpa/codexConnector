@@ -12,18 +12,18 @@ const batch = offers => ({ observed_at: now, fx_eur_pln: 4.2, fx_source_url: 'ht
 
 test('selects cheaper Pricewatch listing even when a direct retailer is listed first', () => {
   const rows = selectLowest(batch([offer(), offer({ retailer: 'Local comparison seller', original_price: 523.93, verification: 'Pricewatch-listed', comparison_url: 'https://tweakers.net/pricewatch/2376176/', comparison_seller: 'Local comparison seller', comparison_seller_country: 'Netherlands', url: 'https://local.example/model' })]));
-  assert.equal(rows.length, 8);
+  assert.equal(rows.length, 6);
   assert.equal(rows.find(x => x.model === '34B2U5900C' && x.country === 'Netherlands').price_eur, 523.93);
   assert.equal(rows.find(x => x.model === '34B2U5900C' && x.country === 'Netherlands').verification, 'Pricewatch-listed');
   assert.equal(rows.find(x => x.model === '34B2U5900C' && x.country === 'Germany').available, false);
 });
 
-test('rejects Belgian shop assigned to Netherlands, unverified VAT, stale checks and variant mismatch', () => {
-  assert.throws(() => selectLowest(batch([offer({ retailer_country: 'Belgium' })])), /country mismatch/);
+test('rejects wrong-country shops, unverified VAT, stale checks and variant mismatch', () => {
+  assert.throws(() => selectLowest(batch([offer({ retailer_country: 'Germany' })])), /country mismatch/);
   assert.throws(() => selectLowest(batch([offer({ vat_included: false })])), /VAT\/orderability/);
   assert.throws(() => selectLowest(batch([offer({ checked_at: '2020-01-01T00:00:00Z' })])), /Stale/);
   assert.throws(() => selectLowest(batch([offer({ model: '34B2U5900C-01' })])), /Unknown model/);
-  assert.throws(() => selectLowest(batch([offer({ verification: 'Pricewatch-listed', comparison_url: 'https://tweakers.net/pricewatch/2376176/', comparison_seller: 'Redable.be', comparison_seller_country: 'Belgium' })])), /Comparison seller country mismatch/);
+  assert.throws(() => selectLowest(batch([offer({ verification: 'Pricewatch-listed', comparison_url: 'https://tweakers.net/pricewatch/2376176/', comparison_seller: 'German shop', comparison_seller_country: 'Germany' })])), /Comparison seller country mismatch/);
 });
 
 test('converts Polish local price using checked FX and retains all product-country pairs', () => {
@@ -58,21 +58,11 @@ test('keeps source dates and preorder notes for current screenshot evidence', ()
   assert.equal(row.status_note, 'Preorder; available from 22 October 2026.');
 });
 
-test('keeps Belgian and Dutch minima separate and returns every unique product-country pair', () => {
-  const be = offer({country:'Belgium', retailer_country:'Belgium', retailer:'Redable.be', original_price:510, verification:'Pricewatch-listed', comparison_url:'https://tweakers.net/pricewatch/2376176/', comparison_seller:'Redable.be', comparison_seller_country:'Belgium'});
-  const rows=selectLowest(batch([offer({original_price:580}), be, {...be, retailer:'Other Belgian shop', comparison_seller:'Other Belgian shop', original_price:540}]));
-  assert.equal(new Set(rows.map(r=>r.model+'|'+r.country)).size,8);
-  assert.equal(rows.find(r=>r.model===be.model && r.country==='Belgium').price_eur,510);
-  assert.equal(rows.find(r=>r.model===be.model && r.country==='Netherlands').price_eur,580);
-  assert.equal(rows.filter(r=>r.country==='Belgium' && !r.available).length,1);
-  assert.throws(()=>selectLowest(batch([{...be,comparison_seller_country:'Netherlands'}])),/country mismatch/);
-});
-
 
 test('catalog supports GPU, memory and input devices without monitor constants', () => {
  const products=[{model:'GPU-EXACT-16GB',category:'GPU'},{model:'RAM-2X16-6000-CL30',category:'Memory'},{model:'KEYBOARD-US-RED',category:'Keyboard'},{model:'PAUSED',category:'Mouse',enabled:false}];
  const rows=selectLowest(batch([offer({model:'RAM-2X16-6000-CL30',original_price:95})]),products);
- assert.equal(rows.length,12);
+ assert.equal(rows.length,9);
  assert.equal(rows.find(r=>r.available).category,'Memory');
  assert.equal(rows.find(r=>r.available).price_eur,95);
  assert.ok(!rows.some(r=>r.model==='PAUSED'));
@@ -100,7 +90,7 @@ test('preserves primary versus competitor relationships in every observation', (
 test('published catalog produces exactly one observation per enabled product and country', () => {
  const active = PRODUCTS.filter(p => p.enabled !== false);
  const rows = selectCatalogLowest(batch([]));
- const expected = active.flatMap(p => ['Germany','Netherlands','Poland','Belgium'].map(c => p.model+'|'+c)).sort();
+ const expected = active.flatMap(p => ['Germany','Netherlands','Poland'].map(c => p.model+'|'+c)).sort();
  assert.deepEqual(rows.map(r => r.model+'|'+r.country).sort(), expected);
  assert.ok(rows.every(r => r.available === false && r.price_eur === null));
 });
