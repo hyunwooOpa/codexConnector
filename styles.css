@@ -9,3 +9,17 @@
 .remove-btn{border-color:#d86a78;color:#ffb3bb}
 
 .manual-price-btn{border-color:var(--green);color:#bff5df}.manual-price-dialog{width:min(520px,calc(100vw - 28px));border:1px solid var(--line);border-radius:var(--radius);background:#0d1c30;color:var(--text);padding:0;box-shadow:0 24px 80px rgba(0,0,0,.55)}.manual-price-dialog::backdrop{background:rgba(2,8,16,.72);backdrop-filter:blur(4px)}.manual-price-dialog form{padding:20px;display:grid;gap:14px}.manual-price-dialog label{display:grid;gap:7px;color:var(--muted);font-size:13px}.dialog-close{font-size:24px;line-height:1;padding:4px 10px;background:transparent;border:0}.dialog-actions{display:flex;gap:10px;justify-content:flex-end}
+
+
+/* Focused price-history chart */
+.chart-panel{min-width:0}
+.chart-controls{display:flex;align-items:end;gap:14px;flex-wrap:wrap;margin:14px 0 4px;padding:12px 14px;border:1px solid var(--line);border-radius:12px;background:rgba(7,18,31,.55)}
+.chart-controls label{display:grid;gap:6px;min-width:min(100%,340px);color:var(--muted);font-size:12px}
+.chart-controls select{width:100%}
+#chartContext{color:#c9d8ea;font-size:12px;padding:10px 0}
+.chart-wrap{height:430px;margin-top:8px}
+#countryFilters label{display:flex;align-items:center;gap:9px;padding:8px 10px;border:1px solid transparent;border-radius:9px}
+#countryFilters label:hover{background:rgba(45,140,255,.08);border-color:var(--line)}
+#countryFilters input{min-width:auto}
+@media(max-width:850px){.chart-wrap{height:360px}.chart-controls{align-items:stretch}.chart-controls label{min-width:100%}}
+@media(max-width:520px){.chart-wrap{height:310px}}
