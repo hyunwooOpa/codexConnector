@@ -6,7 +6,7 @@
   "display": "standalone",
   "background_color": "#07111f",
   "theme_color": "#07111f",
-  "description": "Compare exact PC components and peripherals across Germany, Netherlands, Poland and Belgium.",
+  "description": "Compare exact PC components and peripherals across Germany, Netherlands and Poland.",
   "icons": [
     {
       "src": "icon-192.png",
