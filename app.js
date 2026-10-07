@@ -114,5 +114,31 @@ $('countryFilters').innerHTML=COUNTRIES.map(c=>`<label><input type="checkbox" da
 $('tableCountry').innerHTML='<option value="">All countries</option>'+COUNTRIES.map(c=>`<option>${c}</option>`).join('');
 $('category').innerHTML='<option value="">All categories</option>'+CATEGORIES.map(c=>`<option>${c}</option>`).join('');$('newCategory').innerHTML=CATEGORIES.map(c=>`<option>${c}</option>`).join('');
 document.querySelectorAll('[data-days]').forEach(b=>b.onclick=()=>{days=b.dataset.days;document.querySelectorAll('[data-days]').forEach(x=>x.classList.toggle('selected',x===b));renderChart()});
-async function load(){const [p,h]=await Promise.all(['data/products.json','data/price-history.json'].map(async url=>{const r=await fetch(url,{cache:'no-store'});if(!r.ok)throw Error('Unable to load '+url);return r.json()}));catalog=p;publishedObservations=h;refreshObservations();const old=saved('customMonitors',[]);let migrated=0;for(const x of old)if(x.model&&!products().some(p=>p.model===x.model)){drafts.push({...x,category:'Monitor',enabled:true});migrated++}if(migrated)persist();renderOptions();render();const times=observations.filter(o=>!o.invalidated_observation).map(o=>Date.parse(o.timestamp)).filter(t=>Number.isFinite(t)&&t<=Date.now()+60000);$('lastUpdated').textContent=times.length?date(Math.max(...times)):'No checks yet'}
+async function load(){
+ const productResponse=await fetch('data/products.json',{cache:'no-store'});
+ if(!productResponse.ok)throw Error('Unable to load product catalog');
+ const p=await productResponse.json();
+ if(!Array.isArray(p))throw Error('Product catalog is invalid');
+ catalog=p;
+ let historyWarning='';
+ try{
+  const historyResponse=await fetch('data/price-history.json',{cache:'no-store'});
+  if(!historyResponse.ok)throw Error('HTTP '+historyResponse.status);
+  const raw=await historyResponse.text();
+  const h=JSON.parse(raw);
+  if(!Array.isArray(h))throw Error('history root is not an array');
+  publishedObservations=h;
+ }catch(error){
+  publishedObservations=[];
+  historyWarning='Price history is temporarily unavailable ('+error.message+'). Product catalog is still shown.';
+ }
+ refreshObservations();
+ const old=saved('customMonitors',[]);let migrated=0;
+ for(const x of old)if(x.model&&!products().some(p=>p.model===x.model)){drafts.push({...x,category:'Monitor',enabled:true});migrated++}
+ if(migrated)persist();
+ renderOptions();render();
+ const times=observations.filter(o=>!o.invalidated_observation).map(o=>Date.parse(o.timestamp)).filter(t=>Number.isFinite(t)&&t<=Date.now()+60000);
+ $('lastUpdated').textContent=historyWarning?'History unavailable':times.length?date(Math.max(...times)):'No checks yet';
+ if(historyWarning){$('chartEmpty').hidden=false;$('chartEmpty').textContent=historyWarning;$('tableCount').textContent=historyWarning;}
+}
 load().catch(e=>{$('overview').innerHTML='<div class="panel empty">'+esc(e.message)+'</div>'});
