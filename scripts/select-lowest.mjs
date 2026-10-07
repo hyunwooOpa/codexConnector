@@ -5,8 +5,8 @@ import { pathToFileURL } from 'node:url';
 
 export const PRODUCTS = JSON.parse(readFileSync(new URL('../data/products.json', import.meta.url), 'utf8'));
 export const MODELS = PRODUCTS.filter(p => p.enabled !== false).map(p => p.model);
-export const COUNTRIES = ['Germany', 'Netherlands', 'Poland', 'Belgium'];
-const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN', Belgium: 'EUR' };
+export const COUNTRIES = ['Germany', 'Netherlands', 'Poland'];
+const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN' };
 const MAX_AGE_MS = 2 * 60 * 60 * 1000;
 
 function validUrl(value) {
