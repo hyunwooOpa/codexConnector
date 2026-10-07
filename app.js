@@ -1,6 +1,6 @@
-const COUNTRIES=['Germany','Netherlands','Poland'];
+const COUNTRIES=['Germany','Netherlands','Poland','Belgium'];
 const CATEGORIES=['Monitor','GPU','Memory','CPU','Motherboard','Storage','Power supply','Case','Cooling','Keyboard','Mouse','Controller','Webcam','Audio','Networking','Accessories','Other'];
-const FLAGS={Germany:'🇩🇪',Netherlands:'🇳🇱',Poland:'🇵🇱'};
+const FLAGS={Germany:'🇩🇪',Netherlands:'🇳🇱',Poland:'🇵🇱',Belgium:'🇧🇪'};
 const KEY='pcUpgradeDraftsV1', STATE='pcUpgradeShoppingV1', MANUAL='pcUpgradeManualPricesV1', MAX_AGE=10*3600000;
 const $=id=>document.getElementById(id);
 const esc=v=>String(v??'').replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
@@ -9,7 +9,7 @@ const date=v=>new Date(v).toLocaleString('en-GB',{timeZone:'Europe/Amsterdam',da
 const safeUrl=v=>/^https?:\/\//i.test(v||'')?v:null;
 function saved(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
 let catalog=[],publishedObservations=[],manualObservations=saved(MANUAL,[]),observations=[],drafts=saved(KEY,[]),shopping=saved(STATE,{}),chart;
-let days='30';
+let days='30',chartModel='';
 function products(){return [...catalog,...drafts.filter(d=>!catalog.some(p=>p.model===d.model))].filter(p=>!shopping[p.model]?.removed).map(p=>({...p,...(shopping[p.model]?.catalog||{})}))}
 function metadata(model){return products().find(p=>p.model===model)||{model,name:model,category:'Other'}}
 function localState(p){return shopping[p.model]||{status:'Planned',target:p.target_price_eur??null,notes:''}}
@@ -56,12 +56,26 @@ function renderCards(){const shown=visibleProducts();$('overview').innerHTML=sho
  $('draftCount').textContent=products().filter(isDraft).length;
  const reached=shown.filter(p=>{const t=localState(p).target,b=best(p.model);return t!=null&&b&&b.price_eur<=t});$('targetCount').textContent=reached.length;
 }
-function renderChart(){const cs=selectedCountries(),cutoff=days==='all'?0:Date.now()-Number(days)*86400000;
- const datasets=visibleProducts().map(p=>{const current=new Map(),points=[];const rows=observations.filter(o=>o.model===p.model&&cs.includes(o.country)&&!o.invalidated_observation&&Date.parse(o.timestamp)<=Date.now()+60000).sort((a,b)=>Date.parse(a.timestamp)-Date.parse(b.timestamp));for(const o of rows){const t=Date.parse(o.timestamp);current.set(o.country,o);if(t<cutoff)continue;const b=[...current.values()].filter(v=>v.available!==false&&Number.isFinite(v.price_eur)&&true).sort((a,b)=>a.price_eur-b.price_eur)[0];const point={x:t,y:b?.price_eur??null,retailer:b?.retailer,country:b?.country};if(points.at(-1)?.x===t)points[points.length-1]=point;else points.push(point)}return {label:p.name||p.model,data:points,borderColor:color(p.model),backgroundColor:color(p.model),pointRadius:3,tension:0,spanGaps:false}}).filter(d=>d.data.length);
- $('chartEmpty').hidden=datasets.length>0;if(chart)chart.destroy();if(typeof Chart==='undefined'){$('chartEmpty').hidden=false;$('chartEmpty').textContent='Chart could not load. Prices and history are available below.';return}chart=new Chart($('priceChart'),{type:'line',data:{datasets},options:{responsive:true,maintainAspectRatio:false,parsing:false,scales:{x:{type:'linear',ticks:{color:'#aebcd0',callback:v=>new Date(v).toLocaleDateString('en-GB',{timeZone:'Europe/Amsterdam',day:'2-digit',month:'short'})}},y:{ticks:{color:'#aebcd0',callback:v=>'€'+v}}},plugins:{legend:{labels:{color:'#f5f8fc'}},tooltip:{callbacks:{title:items=>date(items[0].raw.x),label:c=>`${c.dataset.label}: ${eur(c.raw.y)} · ${c.raw.country||''} · ${c.raw.retailer||''}`}}}}});
+function renderChart(){
+ const cs=selectedCountries(),cutoff=days==='all'?0:Date.now()-Number(days)*86400000;
+ const candidates=visibleProducts();
+ if(chartModel&&!candidates.some(p=>p.model===chartModel))chartModel='';
+ const selected=chartModel?candidates.filter(p=>p.model===chartModel):candidates.slice(0,1);
+ const datasets=[];
+ for(const p of selected)for(const country of cs){
+  const rows=observations.filter(o=>o.model===p.model&&o.country===country&&!o.invalidated_observation&&o.available!==false&&Number.isFinite(o.price_eur)&&Date.parse(o.timestamp)<=Date.now()+60000&&Date.parse(o.timestamp)>=cutoff).sort((a,b)=>Date.parse(a.timestamp)-Date.parse(b.timestamp));
+  if(!rows.length)continue;
+  const points=rows.map(o=>({x:Date.parse(o.timestamp),y:o.price_eur,retailer:o.retailer,country:o.country,status:o.verification}));
+  datasets.push({label:`${FLAGS[country]||''} ${country}`,data:points,borderColor:color(p.model+'-'+country),backgroundColor:color(p.model+'-'+country),borderWidth:2.5,pointRadius:days==='1'?4:2,pointHoverRadius:6,tension:.12,spanGaps:false});
+ }
+ $('chartEmpty').hidden=datasets.length>0;
+ if(chart)chart.destroy();
+ if(typeof Chart==='undefined'){$('chartEmpty').hidden=false;$('chartEmpty').textContent='Chart could not load. Prices and history are available below.';return}
+ chart=new Chart($('priceChart'),{type:'line',data:{datasets},options:{responsive:true,maintainAspectRatio:false,interaction:{mode:'nearest',axis:'x',intersect:false},layout:{padding:{top:8,right:12,bottom:4,left:4}},scales:{x:{type:'linear',grid:{color:'rgba(174,188,208,.08)'},ticks:{color:'#c7d4e5',maxTicksLimit:8,maxRotation:0,callback:v=>new Date(v).toLocaleDateString('en-GB',{timeZone:'Europe/Amsterdam',day:'numeric',month:'short'})}},y:{grace:'8%',grid:{color:'rgba(174,188,208,.12)'},ticks:{color:'#c7d4e5',callback:v=>'€'+Number(v).toLocaleString('en-IE')}}},plugins:{legend:{position:'bottom',labels:{color:'#f5f8fc',usePointStyle:true,boxWidth:8,padding:18}},tooltip:{displayColors:true,callbacks:{title:items=>date(items[0].raw.x),label:c=>`${c.dataset.label}: ${eur(c.raw.y)}`,afterLabel:c=>c.raw.retailer?`Retailer: ${c.raw.retailer}`:''}}}}});
+ const p=selected[0];$('chartContext').textContent=p?`Showing ${p.name||p.model} · one line per country`:'No product selected';
 }
 function renderTable(){const allowed=new Set(visibleProducts().map(p=>p.model)),model=$('tableModel').value,country=$('tableCountry').value;const rows=observations.filter(o=>allowed.has(o.model)&&(!model||o.model===model)&&(!country||o.country===country)).sort((a,b)=>Date.parse(b.timestamp)-Date.parse(a.timestamp));$('priceRows').innerHTML=rows.map(o=>{const invalid=!!o.invalidated_observation,url=safeUrl(o.comparison_url||o.url),p=metadata(o.model),role=p.tracking_role||'primary';const status=invalid?'Invalidated':o.available===false?'Price unknown':o.verification==='manual-user-entry'?'Manual entry · unverified':o.availability_status==='preorder'?'Preorder':/listed/.test(o.verification||'')?'Listed · checkout unconfirmed':'Retailer-confirmed at check';return `<tr><td>${esc(date(o.timestamp))}</td><td>${esc(p.name||o.model)}</td><td>${esc(p.category)}</td><td>${role==='competitor'?'Competitor':'Primary'}</td><td>${FLAGS[o.country]||''} ${esc(o.country)}</td><td>${!invalid&&o.original_price!=null?esc(o.original_price+' '+o.original_currency):'—'}</td><td>${invalid?'—':eur(o.price_eur)}</td><td>${esc(o.retailer)}</td><td>${status}<details><summary>Details</summary>${esc(o.correction_reason||o.status_note||'No additional delivery information.')}</details></td><td>${url?`<a href="${esc(url)}" target="_blank" rel="noopener">Source ↗</a>`:'—'}</td></tr>`}).join('')||'<tr><td colspan="10">No observations match these filters.</td></tr>';$('tableCount').textContent=`${rows.length} of ${observations.length} observations`}
-function renderOptions(){const old=$('tableModel').value;$('tableModel').innerHTML='<option value="">All products</option>'+products().map(p=>`<option value="${esc(p.model)}">${esc(p.name||p.model)}</option>`).join('');$('tableModel').value=old;}
+function renderOptions(){const old=$('tableModel').value;$('tableModel').innerHTML='<option value="">All products</option>'+products().map(p=>`<option value="${esc(p.model)}">${esc(p.name||p.model)}</option>`).join('');$('tableModel').value=old;const chartOld=$('chartModel')?.value||chartModel;const el=$('chartModel');if(el){el.innerHTML=products().map(p=>`<option value="${esc(p.model)}">${esc(p.name||p.model)}</option>`).join('');chartModel=products().some(p=>p.model===chartOld)?chartOld:(products()[0]?.model||'');el.value=chartModel;}}
 function render(){renderCards();renderChart();renderTable()}
 function message(text){$('formMessage').textContent=text}
 function persistManual(){localStorage.setItem(MANUAL,JSON.stringify(manualObservations))}
@@ -108,7 +122,7 @@ $('cancelEdit').onclick=()=>{resetForm();message('')};$('exportCatalog').onclick
 $('manualPriceForm').onsubmit=saveManualPrice;$('cancelManualPrice').onclick=()=>$('manualPriceDialog').close();
 $('importCatalog').onchange=async e=>{try{const input=JSON.parse(await e.target.files[0].text());if(!Array.isArray(input)||input.some(p=>!p||typeof p.model!=='string'||!p.model.trim()||!CATEGORIES.includes(p.category))||new Set(input.map(p=>p.model)).size!==input.length)throw Error('Use a product array with unique models and supported categories.');drafts=input.filter(p=>!catalog.some(c=>c.model===p.model));persist();renderOptions();render();message('New catalog products imported as device-only drafts. Published products were preserved.')}catch(error){message('Import failed: '+error.message)}e.target.value=''};
 for(const id of ['search','category','roleFilter','shoppingFilter'])$(id).addEventListener('input',render);
-for(const id of ['tableModel','tableCountry'])$(id).addEventListener('change',renderTable);
+for(const id of ['tableModel','tableCountry'])$(id).addEventListener('change',renderTable);$('chartModel').addEventListener('change',e=>{chartModel=e.target.value;renderChart()});
 $('resetFilters').onclick=()=>{$('search').value='';$('category').value='';$('roleFilter').value='';$('shoppingFilter').value='';$('tableModel').value='';$('tableCountry').value='';document.querySelectorAll('[data-country]').forEach(x=>x.checked=true);render()};
 $('countryFilters').innerHTML=COUNTRIES.map(c=>`<label><input type="checkbox" data-country="${c}" checked> ${FLAGS[c]} ${c}</label>`).join('');document.querySelectorAll('[data-country]').forEach(x=>x.onchange=()=>{renderCards();renderChart()});
 $('tableCountry').innerHTML='<option value="">All countries</option>'+COUNTRIES.map(c=>`<option>${c}</option>`).join('');
