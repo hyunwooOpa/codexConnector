@@ -7,7 +7,7 @@ const catalog=JSON.parse(fs.readFileSync(new URL('../data/products.json',import.
 async function boot(storage=new Map()){
  const nodes=new Map();
  const el=id=>{if(!nodes.has(id))nodes.set(id,{value:'',checked:true,innerHTML:'',textContent:'',hidden:false,dataset:{},addEventListener(){},scrollIntoView(){},reset(){}});return nodes.get(id)};
- const countries=['Germany','Netherlands','Poland','Belgium'].map(c=>({checked:true,dataset:{country:c}}));
+ const countries=['Germany','Netherlands','Poland'].map(c=>({checked:true,dataset:{country:c}}));
  const ctx=vm.createContext({console,Intl,Date,URL,Blob,document:{getElementById:el,querySelectorAll:s=>s==='[data-country]:checked'||s==='[data-country]'?countries:[]},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},Chart:class{destroy(){}},fetch:async url=>({ok:true,json:async()=>url.includes('products')?catalog:[]})});
  vm.runInContext(source,ctx);await new Promise(setImmediate);
  return {el,ctx,storage};
