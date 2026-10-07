@@ -1,12 +1,12 @@
 import { readFileSync } from 'node:fs';
-import { readFile, writeFile } from 'node:fs/promises';
+import { readFile, writeFile, rename, rm } from 'node:fs/promises';
 import { resolve } from 'node:path';
 import { pathToFileURL } from 'node:url';
 
 export const PRODUCTS = JSON.parse(readFileSync(new URL('../data/products.json', import.meta.url), 'utf8'));
 export const MODELS = PRODUCTS.filter(p => p.enabled !== false).map(p => p.model);
-export const COUNTRIES = ['Germany', 'Netherlands', 'Poland'];
-const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN' };
+export const COUNTRIES = ['Germany', 'Netherlands', 'Poland', 'Belgium'];
+const CURRENCY = { Germany: 'EUR', Netherlands: 'EUR', Poland: 'PLN', Belgium: 'EUR' };
 const MAX_AGE_MS = 2 * 60 * 60 * 1000;
 
 function validUrl(value) {
@@ -71,7 +71,14 @@ if (process.argv[1] && import.meta.url === pathToFileURL(resolve(process.argv[1]
         const previous = JSON.parse(await readFile(historyPath, 'utf8'));
         if (!Array.isArray(previous)) throw new Error('History must be an array');
         if (observations.length && previous.some(x => x.timestamp === observations[0].timestamp && MODELS.includes(x.model) && COUNTRIES.includes(x.country))) throw new Error('Observation timestamp already exists in history; use a fresh check timestamp');
-        await writeFile(historyPath, JSON.stringify([...previous, ...observations], null, 2) + '\n');
+        const serialized = JSON.stringify([...previous, ...observations], null, 2) + '\n';
+        JSON.parse(serialized);
+        const tempPath = historyPath + '.tmp';
+        try {
+          await writeFile(tempPath, serialized);
+          JSON.parse(await readFile(tempPath, 'utf8'));
+          await rename(tempPath, historyPath);
+        } finally { await rm(tempPath, { force: true }).catch(() => {}); }
       } else console.log(JSON.stringify(observations, null, 2));
     } catch (error) { console.error(error.message); process.exitCode = 1; }
   }
