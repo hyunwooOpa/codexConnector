@@ -35,3 +35,28 @@ test('role filter separates primary products from competitors',async()=>{
  assert.match(el('overview').innerHTML,/<h3>Philips 34B2U5900C/);
  assert.doesNotMatch(el('overview').innerHTML,/Samsung ViewFinity/);
 });
+
+
+test('recent verified price survives a newer evidence-gap observation',async()=>{
+ const {ctx}=await boot();
+ const now=Date.now();
+ const older=new Date(now-30*60*1000).toISOString();
+ const newer=new Date(now-5*60*1000).toISOString();
+ vm.runInContext(`observations=[
+  {model:'P3426WEV',country:'Netherlands',timestamp:'${older}',available:true,price_eur:583.70,retailer:'Dell Netherlands'},
+  {model:'P3426WEV',country:'Netherlands',timestamp:'${newer}',available:false,price_eur:null,retailer:'No verified local orderable offer found'}
+ ]`,ctx);
+ const price=vm.runInContext("latestPrice('P3426WEV','Netherlands')",ctx);
+ assert.equal(price.price_eur,583.70);
+ assert.equal(price.retailer,'Dell Netherlands');
+});
+
+test('expired verified price is not reused after the freshness window',async()=>{
+ const {ctx}=await boot();
+ const old=new Date(Date.now()-11*60*60*1000).toISOString();
+ vm.runInContext(`observations=[
+  {model:'P3426WEV',country:'Germany',timestamp:'${old}',available:true,price_eur:574.05,retailer:'Dell Germany'}
+ ]`,ctx);
+ const price=vm.runInContext("latestPrice('P3426WEV','Germany')",ctx);
+ assert.equal(price,undefined);
+});
