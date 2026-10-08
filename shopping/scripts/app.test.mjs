@@ -81,3 +81,20 @@ test('shopping catalog still renders when price history is temporarily unavailab
   assert.match(el('tableCount').textContent,/History unavailable/i);
   assert.match(el('lastUpdated').textContent,/History unavailable/i);
 });
+
+
+test('shopping chart labels remain unique when multiple products share a country',async()=>{
+  const {ctx,charts}=await boot();
+  const now=new Date().toISOString();
+  vm.runInContext(`catalog=[
+    {model:'A',name:'Product A',category:'Other',enabled:true},
+    {model:'B',name:'Product B',category:'Other',enabled:true}
+  ]; observations=[
+    {model:'A',country:'Netherlands',timestamp:'${now}',available:true,price_eur:10,retailer:'NL A'},
+    {model:'B',country:'Netherlands',timestamp:'${now}',available:true,price_eur:20,retailer:'NL B'}
+  ]; renderChart()`,ctx);
+  const labels=Array.from(charts.at(-1).data.datasets,d=>d.label);
+  assert.equal(new Set(labels).size,labels.length);
+  assert.ok(labels.some(x=>/Product A/.test(x)));
+  assert.ok(labels.some(x=>/Product B/.test(x)));
+});
