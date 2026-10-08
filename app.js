@@ -17,7 +17,7 @@ function isDraft(p){return !catalog.some(x=>x.model===p.model)}
 function visibleProducts(){const q=$('search').value.toLowerCase(),category=$('category').value,status=$('shoppingFilter').value,role=$('roleFilter').value;return products().filter(p=>(!category||p.category===category)&&(!role||((p.tracking_role||'primary')===role))&&(!status||localState(p).status===status)&&(!q||[p.model,p.name,p.brand,p.variant,p.competitor_reason].join(' ').toLowerCase().includes(q)))}
 function latest(model,country){return observations.filter(o=>o.model===model&&o.country===country&&!o.invalidated_observation&&Date.parse(o.timestamp)<=Date.now()+60000).sort((a,b)=>Date.parse(b.timestamp)-Date.parse(a.timestamp))[0]}
 function eligible(o){return o&&o.available!==false&&Number.isFinite(o.price_eur)}
-function latestPrice(model,country){return observations.filter(o=>o.model===model&&o.country===country&&!o.invalidated_observation&&eligible(o)&&Date.parse(o.timestamp)<=Date.now()+60000&&Date.now()-Date.parse(o.timestamp)<=MAX_AGE).sort((a,b)=>Date.parse(b.timestamp)-Date.parse(a.timestamp))[0]}
+function latestPrice(model,country){return observations.filter(o=>o.model===model&&o.country===country&&!o.invalidated_observation&&eligible(o)&&Date.parse(o.timestamp)<=Date.now()+60000).sort((a,b)=>Date.parse(b.timestamp)-Date.parse(a.timestamp))[0]}
 function stale(o){return o&&Number.isFinite(Date.parse(o.timestamp))&&Date.now()-Date.parse(o.timestamp)>MAX_AGE}
 function selectedCountries(){return [...document.querySelectorAll('[data-country]:checked')].map(x=>x.dataset.country)}
 function best(model){return selectedCountries().map(c=>latestPrice(model,c)).filter(Boolean).sort((a,b)=>a.price_eur-b.price_eur)[0]}
