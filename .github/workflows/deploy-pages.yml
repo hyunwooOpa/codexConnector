@@ -27,7 +27,7 @@ jobs:
 
       - name: Check price selection and browser code
         run: |
-          node --test scripts/select-lowest.test.mjs
+          node --test scripts/select-lowest.test.mjs scripts/app.test.mjs
           node --check app.js
 
       - name: Setup Pages
