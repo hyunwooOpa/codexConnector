@@ -17,6 +17,7 @@ export function selectLowest(batch,products=PRODUCTS){
   const checked=Date.parse(o.checked_at);if(!Number.isFinite(checked)||now-checked>MAX_AGE_MS||checked>now+60000)throw Error('Stale check');
   if(o.source_timestamp_status==='dated'){const t=Date.parse(o.source_price_at);if(!Number.isFinite(t)||now-t>MAX_AGE_MS||t>now+60000)throw Error('Stale source price')}
   const listed=/^(Pricewatch|Comparison)-listed/.test(o.verification||'');
+  if(o.verification!=='retailer-confirmed'&&!listed)throw Error('Unknown verification');
   if(!listed&&o.orderable!==true)throw Error('Orderability unverified');
   if(listed&&(!validUrl(o.comparison_url)||!o.comparison_seller||o.comparison_seller_country!==o.country))throw Error('Invalid comparison evidence');
   if(!validUrl(o.url)&&!validUrl(o.comparison_url))throw Error('Missing source URL');
