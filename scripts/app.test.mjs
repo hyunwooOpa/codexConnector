@@ -8,7 +8,7 @@ async function boot(storage=new Map()){
  const nodes=new Map();
  const el=id=>{if(!nodes.has(id))nodes.set(id,{value:'',checked:true,innerHTML:'',textContent:'',hidden:false,dataset:{},addEventListener(){},scrollIntoView(){},reset(){}});return nodes.get(id)};
  const countries=['Germany','Netherlands','Poland'].map(c=>({checked:true,dataset:{country:c}}));
- const ctx=vm.createContext({console,Intl,Date,URL,Blob,document:{getElementById:el,querySelectorAll:s=>s==='[data-country]:checked'||s==='[data-country]'?countries:[]},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},Chart:class{destroy(){}},fetch:async url=>({ok:true,json:async()=>url.includes('products')?catalog:[]})});
+ const ctx=vm.createContext({console,Intl,Date,URL,Blob,document:{getElementById:el,querySelectorAll:s=>s==='[data-country]:checked'||s==='[data-country]'?countries:[]},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},Chart:class{destroy(){}},fetch:async url=>({ok:true,json:async()=>url.includes('products')?catalog:[],text:async()=>JSON.stringify(url.includes('products')?catalog:[])})});
  vm.runInContext(source,ctx);await new Promise(setImmediate);
  return {el,ctx,storage};
 }
@@ -51,12 +51,14 @@ test('recent verified price survives a newer evidence-gap observation',async()=>
  assert.equal(price.retailer,'Dell Netherlands');
 });
 
-test('expired verified price is not reused after the freshness window',async()=>{
+test('stale verified price remains visible and is marked stale',async()=>{
  const {ctx}=await boot();
  const old=new Date(Date.now()-11*60*60*1000).toISOString();
  vm.runInContext(`observations=[
   {model:'P3426WEV',country:'Germany',timestamp:'${old}',available:true,price_eur:574.05,retailer:'Dell Germany'}
  ]`,ctx);
  const price=vm.runInContext("latestPrice('P3426WEV','Germany')",ctx);
- assert.equal(price,undefined);
+ const isStale=vm.runInContext("stale(latestPrice('P3426WEV','Germany'))",ctx);
+ assert.equal(price.price_eur,574.05);
+ assert.equal(isStale,true);
 });
