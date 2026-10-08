@@ -62,3 +62,13 @@ test('stale verified price remains visible and is marked stale',async()=>{
  assert.equal(price.price_eur,574.05);
  assert.equal(isStale,true);
 });
+
+
+test('published products removed locally export as disabled instead of disappearing',async()=>{
+  const {ctx}=await boot();
+  vm.runInContext(`shopping['P3426WEV']={removed:true,catalog:{model:'P3426WEV',name:'Dell Pro P3426WEV',category:'Monitor',enabled:true}};`,ctx);
+  const exported=vm.runInContext("catalogForExport()",ctx);
+  const item=exported.find(p=>p.model==='P3426WEV');
+  assert.ok(item);
+  assert.equal(item.enabled,false);
+});
