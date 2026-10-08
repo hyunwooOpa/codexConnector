@@ -1,0 +1,64 @@
+import test from 'node:test';
+import assert from 'node:assert/strict';
+import vm from 'node:vm';
+import fs from 'node:fs';
+
+const source=fs.readFileSync(new URL('../app.js',import.meta.url),'utf8');
+const catalog=JSON.parse(fs.readFileSync(new URL('../data/products.json',import.meta.url)));
+
+async function boot(history=[]){
+  const nodes=new Map(), charts=[];
+  const el=id=>{
+    if(!nodes.has(id))nodes.set(id,{value:'',checked:true,innerHTML:'',textContent:'',hidden:false,dataset:{},addEventListener(){},scrollIntoView(){}});
+    return nodes.get(id);
+  };
+  const countries=['Netherlands','Germany'].map(c=>({checked:true,dataset:{country:c}}));
+  const ctx=vm.createContext({
+    console,Intl,Date,URL,
+    document:{
+      getElementById:el,
+      querySelectorAll:s=>s==='[data-country]:checked'||s==='[data-country]'?countries:[]
+    },
+    Chart:class{constructor(_el,config){charts.push(config)}destroy(){}},
+    fetch:async url=>({ok:true,json:async()=>url.includes('products')?catalog:history})
+  });
+  vm.runInContext(source,ctx);
+  await new Promise(setImmediate);
+  return {ctx,el,charts};
+}
+
+test('newer evidence-gap row does not hide the latest verified shopping price',async()=>{
+  const {ctx}=await boot();
+  const older=new Date(Date.now()-30*60*1000).toISOString();
+  const newer=new Date(Date.now()-5*60*1000).toISOString();
+  vm.runInContext(`observations=[
+    {model:'AU1003501',country:'Netherlands',timestamp:'${older}',available:true,price_eur:77.99,retailer:'bol.com'},
+    {model:'AU1003501',country:'Netherlands',timestamp:'${newer}',available:false,price_eur:null,retailer:'No verified current offer found'}
+  ]`,ctx);
+  const price=vm.runInContext("latestPrice('AU1003501','Netherlands')",ctx);
+  assert.equal(price.price_eur,77.99);
+});
+
+test('shopping chart keeps each country in a separate dataset',async()=>{
+  const {ctx,charts}=await boot();
+  const t1=new Date(Date.now()-60*60*1000).toISOString();
+  const t2=new Date(Date.now()-30*60*1000).toISOString();
+  vm.runInContext(`observations=[
+    {model:'AU1003501',country:'Netherlands',timestamp:'${t1}',available:true,price_eur:77.99,retailer:'NL'},
+    {model:'AU1003501',country:'Germany',timestamp:'${t2}',available:true,price_eur:89.99,retailer:'DE'}
+  ]; renderChart()`,ctx);
+  const datasets=charts.at(-1).data.datasets;
+  assert.equal(datasets.length,2);
+  assert.deepEqual(datasets.map(d=>d.label).sort(),['🇩🇪 Germany','🇳🇱 Netherlands']);
+  assert.ok(datasets.every(d=>new Set(d.data.map(p=>p.country)).size===1));
+});
+
+test('shopping history never emits a clickable unsafe URL scheme',async()=>{
+  const {ctx,el}=await boot();
+  const now=new Date().toISOString();
+  vm.runInContext(`observations=[
+    {model:'AU1003501',country:'Netherlands',timestamp:'${now}',available:true,price_eur:77.99,retailer:'Unsafe',url:'javascript:alert(1)'}
+  ]; renderTable()`,ctx);
+  assert.doesNotMatch(el('priceRows').innerHTML,/javascript:/i);
+  assert.doesNotMatch(el('priceRows').innerHTML,/href=/i);
+});
