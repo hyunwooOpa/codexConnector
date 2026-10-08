@@ -62,3 +62,37 @@ test('stale verified price remains visible and is marked stale',async()=>{
  assert.equal(price.price_eur,574.05);
  assert.equal(isStale,true);
 });
+
+
+test('published products removed locally export as disabled instead of disappearing',async()=>{
+  const {ctx}=await boot();
+  vm.runInContext(`shopping['P3426WEV']={removed:true,catalog:{model:'P3426WEV',name:'Dell Pro P3426WEV',category:'Monitor',enabled:true}};`,ctx);
+  const exported=vm.runInContext("catalogForExport()",ctx);
+  const item=exported.find(p=>p.model==='P3426WEV');
+  assert.ok(item);
+  assert.equal(item.enabled,false);
+});
+
+
+test('manual observations are labeled unverified instead of lowest checked price',async()=>{
+  const {ctx,el}=await boot();
+  const now=new Date().toISOString();
+  vm.runInContext(`observations=[
+    {model:'P3426WEV',country:'Netherlands',timestamp:'${now}',available:true,price_eur:555,retailer:'Manual entry',verification:'manual-user-entry'}
+  ]; renderCards()`,ctx);
+  assert.match(el('overview').innerHTML,/Manual current price · unverified/);
+  assert.doesNotMatch(el('overview').innerHTML,/Lowest checked price/);
+});
+
+test('last checked timestamp ignores newer manual-only observations',async()=>{
+  const {ctx}=await boot();
+  const checked=new Date(Date.now()-60*60*1000).toISOString();
+  const manual=new Date().toISOString();
+  vm.runInContext(`publishedObservations=[
+    {model:'P3426WEV',country:'Netherlands',timestamp:'${checked}',available:true,price_eur:580}
+  ]; manualObservations=[
+    {model:'P3426WEV',country:'Netherlands',timestamp:'${manual}',available:true,price_eur:550,verification:'manual-user-entry'}
+  ]; refreshObservations()`,ctx);
+  const ts=vm.runInContext('lastCheckedAt()',ctx);
+  assert.equal(ts,Date.parse(checked));
+});
