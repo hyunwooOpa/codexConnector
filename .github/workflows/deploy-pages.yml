@@ -4,6 +4,7 @@ on:
   push:
     branches:
       - main
+      - hardening-audit-2026-10-08
   workflow_dispatch:
 
 permissions:
@@ -27,8 +28,9 @@ jobs:
 
       - name: Check price selection and browser code
         run: |
-          node --test scripts/select-lowest.test.mjs scripts/app.test.mjs
+          node --test scripts/select-lowest.test.mjs scripts/app.test.mjs shopping/scripts/select-lowest.test.mjs shopping/scripts/app.test.mjs
           node --check app.js
+          node --check shopping/app.js
 
       - name: Setup Pages
         uses: actions/configure-pages@v5
