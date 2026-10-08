@@ -48,3 +48,21 @@ test('shopping selector rejects a future observation timestamp',()=>{
   const future=new Date(Date.now()+5*60*1000).toISOString();
   assert.throws(()=>selectLowest({observed_at:future,offers:[]},[product]),/Invalid batch/i);
 });
+
+
+test('shopping comparison offers preserve audit metadata and reject explicit non-orderability',()=>{
+  const comparison=offer({
+    verification:'Comparison-listed; retailer checkout price not independently confirmed',
+    comparison_url:'https://comparison.example/AU1003501',
+    comparison_seller:'Local comparison seller',
+    comparison_seller_country:'Netherlands',
+    url:null,
+    orderable:null
+  });
+  const rows=selectLowest({observed_at:now,offers:[comparison]},[product]);
+  const row=rows.find(r=>r.country==='Netherlands');
+  assert.equal(row.comparison_url,'https://comparison.example/AU1003501');
+  assert.equal(row.comparison_seller,'Local comparison seller');
+  assert.equal(row.comparison_seller_country,'Netherlands');
+  assert.throws(()=>selectLowest({observed_at:now,offers:[{...comparison,orderable:false}]},[product]),/Orderability unverified/i);
+});
