@@ -62,3 +62,22 @@ test('shopping history never emits a clickable unsafe URL scheme',async()=>{
   assert.doesNotMatch(el('priceRows').innerHTML,/javascript:/i);
   assert.doesNotMatch(el('priceRows').innerHTML,/href=/i);
 });
+
+
+test('shopping catalog still renders when price history is temporarily unavailable',async()=>{
+  const nodes=new Map(),countries=['Netherlands','Germany'].map(c=>({checked:true,dataset:{country:c}}));
+  const el=id=>{if(!nodes.has(id))nodes.set(id,{value:'',checked:true,innerHTML:'',textContent:'',hidden:false,dataset:{},addEventListener(){},scrollIntoView(){}});return nodes.get(id)};
+  const ctx=vm.createContext({
+    console,Intl,Date,URL,
+    document:{getElementById:el,querySelectorAll:s=>s==='[data-country]:checked'||s==='[data-country]'?countries:[]},
+    Chart:class{destroy(){}},
+    fetch:async url=>url.includes('products')
+      ?{ok:true,status:200,json:async()=>catalog}
+      :{ok:false,status:503,json:async()=>{throw Error('unavailable')}}
+  });
+  vm.runInContext(source.replace(/load\(\);\s*$/,''),ctx);
+  await vm.runInContext('load()',ctx);
+  assert.match(el('overview').innerHTML,/Auronic/);
+  assert.match(el('tableCount').textContent,/History unavailable/i);
+  assert.match(el('lastUpdated').textContent,/History unavailable/i);
+});
