@@ -196,5 +196,37 @@
     "product_url": "https://www.msi.com/Graphics-Card/GeForce-RTX-5070-Ti-16G-VENTUS-3X-OC/Specification",
     "comparison_url": "https://tweakers.net/pricewatch/2176414/msi-geforce-rtx-5070-ti-16g-ventus-3x-oc.html",
     "selection_note": "Specific RTX 5070 Ti variant selected for shared tracking at user request. Browser-only generic drafts are not automatically merged into this exact SKU."
+  },
+  {
+    "model": "PRIME-RTX5070TI-O16G",
+    "name": "ASUS PRIME GeForce RTX 5070 Ti OC Edition 16GB",
+    "category": "GPU",
+    "brand": "ASUS",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "G507T-16V3C"
+    ],
+    "competitor_reason": "Exact ASUS PRIME OC RTX 5070 Ti alternative to the tracked MSI RTX 5070 Ti OC",
+    "enabled": true,
+    "variant": "PRIME-RTX5070TI-O16G; 16GB GDDR7; OC Edition; exclude non-OC, TUF, ROG and other variants",
+    "manufacturer_part_number": "PRIME-RTX5070TI-O16G",
+    "target_price_eur": null,
+    "product_url": "https://www.asus.com/nl/motherboards-components/graphics-cards/prime/prime-rtx5070ti-o16g/"
+  },
+  {
+    "model": "PRIME-RTX5080-O16G",
+    "name": "ASUS PRIME GeForce RTX 5080 OC Edition 16GB",
+    "category": "GPU",
+    "brand": "ASUS",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "G507T-16V3C"
+    ],
+    "competitor_reason": "Higher-performance 16GB RTX 5080 GPU upgrade alternative to the tracked RTX 5070 Ti",
+    "enabled": true,
+    "variant": "PRIME-RTX5080-O16G; 16GB GDDR7; OC Edition; exclude non-OC, TUF, ROG and other variants",
+    "manufacturer_part_number": "PRIME-RTX5080-O16G",
+    "target_price_eur": null,
+    "product_url": "https://www.asus.com/nl/motherboards-components/graphics-cards/prime/prime-rtx5080-o16g/"
   }
 ]
