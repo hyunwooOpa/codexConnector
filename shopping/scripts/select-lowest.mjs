@@ -10,6 +10,7 @@ export function selectLowest(batch,products=PRODUCTS){
  if(!Number.isFinite(now)||now>Date.now()+60000||!Array.isArray(batch.offers))throw Error('Invalid batch');
  const offers=batch.offers.map(o=>{
   if(!models.includes(o.model)||!COUNTRIES.includes(o.country))throw Error('Unknown model/country');
+  if(!o.retailer)throw Error('Missing retailer');
   if(o.retailer_country!==o.country||o.original_currency!=='EUR'||o.vat_included!==true)throw Error('Market/currency/VAT mismatch');
   if(!Number.isFinite(o.original_price)||o.original_price<=0)throw Error('Invalid price');
   if(!['live-page','user-screenshot'].includes(o.evidence_type)||!['dated','not-displayed'].includes(o.source_timestamp_status))throw Error('Insufficient evidence');
