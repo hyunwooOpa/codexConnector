@@ -56,7 +56,7 @@ test('shopping comparison offers preserve audit metadata and reject explicit non
     comparison_url:'https://comparison.example/AU1003501',
     comparison_seller:'Local comparison seller',
     comparison_seller_country:'Netherlands',
-    url:null,
+    url:'javascript:alert(1)',
     orderable:null
   });
   const rows=selectLowest({observed_at:now,offers:[comparison]},[product]);
@@ -64,5 +64,6 @@ test('shopping comparison offers preserve audit metadata and reject explicit non
   assert.equal(row.comparison_url,'https://comparison.example/AU1003501');
   assert.equal(row.comparison_seller,'Local comparison seller');
   assert.equal(row.comparison_seller_country,'Netherlands');
+  assert.equal(row.url,'https://comparison.example/AU1003501');
   assert.throws(()=>selectLowest({observed_at:now,offers:[{...comparison,orderable:false}]},[product]),/Orderability unverified/i);
 });
