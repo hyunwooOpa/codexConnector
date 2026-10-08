@@ -49,7 +49,11 @@ test('shopping chart keeps each country in a separate dataset',async()=>{
   ]; renderChart()`,ctx);
   const datasets=charts.at(-1).data.datasets;
   assert.equal(datasets.length,2);
-  assert.deepEqual(Array.from(datasets,d=>d.label).sort(),['🇩🇪 Germany','🇳🇱 Netherlands']);
+  const labels=Array.from(datasets,d=>d.label);
+  assert.equal(labels.length,2);
+  assert.ok(labels.every(x=>/Auronic/.test(x)));
+  assert.ok(labels.some(x=>/Germany/.test(x)));
+  assert.ok(labels.some(x=>/Netherlands/.test(x)));
   assert.ok(datasets.every(d=>new Set(d.data.map(p=>p.country)).size===1));
 });
 
