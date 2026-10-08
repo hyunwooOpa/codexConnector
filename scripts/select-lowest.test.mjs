@@ -94,3 +94,17 @@ test('published catalog produces exactly one observation per enabled product and
  assert.deepEqual(rows.map(r => r.model+'|'+r.country).sort(), expected);
  assert.ok(rows.every(r => r.available === false && r.price_eur === null));
 });
+
+
+test('preserves structured preorder state in the selected observation', () => {
+  const rows = selectLowest(batch([offer({ availability_status: 'preorder', status_note: 'Preorder; available later.' })]));
+  const row = rows.find(x => x.model === '34B2U5900C' && x.country === 'Netherlands');
+  assert.equal(row.availability_status, 'preorder');
+});
+
+test('missing offers retain an explicit evidence-gap audit note', () => {
+  const rows = selectLowest(batch([]));
+  const row = rows.find(x => x.model === '34B2U5900C' && x.country === 'Germany');
+  assert.equal(row.available, false);
+  assert.match(row.status_note, /No fresh exact-product local offer established/i);
+});
