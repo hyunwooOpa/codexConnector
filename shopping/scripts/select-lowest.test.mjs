@@ -37,3 +37,14 @@ test('shopping selector records a specific audit note for missing verified offer
   assert.equal(row.available,false);
   assert.match(row.status_note,/No fresh exact-product local offer established/i);
 });
+
+
+test('shopping selector requires a named retailer and known verification mode',()=>{
+  assert.throws(()=>selectLowest({observed_at:now,offers:[offer({retailer:''})]},[product]),/Missing retailer/i);
+  assert.throws(()=>selectLowest({observed_at:now,offers:[offer({verification:'mystery-verification'})]},[product]),/Unknown verification/i);
+});
+
+test('shopping selector rejects a future observation timestamp',()=>{
+  const future=new Date(Date.now()+5*60*1000).toISOString();
+  assert.throws(()=>selectLowest({observed_at:future,offers:[]},[product]),/Invalid batch/i);
+});
