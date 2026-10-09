@@ -228,5 +228,55 @@
     "manufacturer_part_number": "PRIME-RTX5080-O16G",
     "target_price_eur": null,
     "product_url": "https://www.asus.com/nl/motherboards-components/graphics-cards/prime/prime-rtx5080-o16g/"
+  },
+  {
+    "model": "GV-N507TGAMING OC-16GD",
+    "name": "GIGABYTE GeForce RTX 5070 Ti GAMING OC 16G",
+    "category": "GPU",
+    "brand": "GIGABYTE",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "G507T-16V3C"
+    ],
+    "competitor_reason": "Exact 16GB RTX 5070 Ti GAMING OC alternative to the MSI VENTUS 3X OC",
+    "enabled": true,
+    "variant": "GV-N507TGAMING OC-16GD; GAMING OC; 16GB GDDR7; new retail offers; exclude non-OC, WINDFORCE, EAGLE, AERO and AORUS",
+    "manufacturer_part_number": "GV-N507TGAMING OC-16GD",
+    "ean": "4719331355562",
+    "target_price_eur": 1000,
+    "product_url": "https://www.gigabyte.com/Graphics-Card/GV-N507TGAMING-OC-16GD",
+    "comparison_url": "https://tweakers.net/pricewatch/2158422/gigabyte-geforce-rtx-5070-ti-gaming-oc-16g.html",
+    "marketplace_leads": [
+      {
+        "url": "https://www.marktplaats.nl/v/computers-en-software/videokaarten/m2444880144-gigabyte-geforce-rtx-5070-ti-gaming-oc-16gb-refurbished",
+        "condition": "refurbished",
+        "status_note": "Private marketplace lead; advertised asking price is not a VAT-inclusive new-retail observation. Check invoice, repair history, warranty and condition separately."
+      }
+    ]
+  },
+  {
+    "model": "GV-N507TWF3OC-16GD",
+    "name": "GIGABYTE GeForce RTX 5070 Ti WINDFORCE OC SFF 16G",
+    "category": "GPU",
+    "brand": "GIGABYTE",
+    "tracking_role": "competitor",
+    "competitor_of": [
+      "G507T-16V3C"
+    ],
+    "competitor_reason": "Exact compact 16GB RTX 5070 Ti WINDFORCE OC SFF alternative to the MSI VENTUS 3X OC",
+    "enabled": true,
+    "variant": "GV-N507TWF3OC-16GD; WINDFORCE OC SFF; 16GB GDDR7; new retail offers; exclude V2 (GV-N507TWF3OCV2-16GD), non-OC, GAMING, EAGLE and AERO",
+    "manufacturer_part_number": "GV-N507TWF3OC-16GD",
+    "ean": "4719331355579",
+    "target_price_eur": 1000,
+    "product_url": "https://www.gigabyte.com/Graphics-Card/GV-N507TWF3OC-16GD",
+    "comparison_url": "https://tweakers.net/pricewatch/2158414/gigabyte-geforce-rtx-5070-ti-windforce-oc-sff-16g.html",
+    "marketplace_leads": [
+      {
+        "url": "https://www.marktplaats.nl/v/computers-en-software/videokaarten/m2441839492-gigabyte-geforce-rtx-5070-ti-windforce-oc-sff-16g-sealed",
+        "condition": "seller claims new sealed",
+        "status_note": "Private marketplace lead; confirm original invoice, remaining warranty and contents. Do not merge with VAT-inclusive new-retail price history."
+      }
+    ]
   }
 ]
