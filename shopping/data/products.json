@@ -10,5 +10,18 @@
     "variant": "200 × 180 cm; 2 persons; 3 heat settings; plush/fleece; taupe; 120 W",
     "target_price_eur": null,
     "product_url": "https://www.bol.com/nl/nl/p/auronic-elektrische-deken-warmtedeken-3-warmtestanden-2-persoons-bovendeken-rabbit-fur-200-x-180-cm-taupe/9300000237286414/"
+  },
+  {
+    "model": "Y-RAIN-TREADMILL-15PCT-1000X405-12KMH",
+    "name": "Y-Rain opvouwbare loopband – 15% automatische helling – 1–12 km/u",
+    "category": "Sports & Fitness",
+    "brand": "Y-Rain",
+    "enabled": true,
+    "variant": "15% automatic incline; 1000 × 405 mm running surface; LCD touchscreen; Bluetooth and app; advertised 3.5 HP motor; 1–12 km/h; advertised maximum user weight 135 kg",
+    "target_price_eur": null,
+    "product_url": "https://a.aliexpress.com/_Ew6QaIK",
+    "identity_status": "User-provided listing; manufacturer model number and selected listing options not independently verified.",
+    "specification_source": "User-provided AliExpress listing description",
+    "tracking_note": "Internal tracker identifier, not a manufacturer part number. Match the linked listing and all specified features; verify selected variant, VAT, shipping and destination before recording a price."
   }
 ]
