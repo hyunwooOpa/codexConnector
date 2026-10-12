@@ -50403,12 +50403,15 @@
     "original_price": 5499,
     "price_eur": 1254.48,
     "available": true,
-    "url": "https://www.proshop.pl/Karta-graficzna/GIGABYTE-GeForce-RTX-5070-Ti-WindForce-3-OC-16GB-GDDR7-RAM-Karta-graficzna/3331106",
-    "verification": "retailer-confirmed",
+    "url": "https://www.ceneo.pl/181904206",
+    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "evidence_type": "live-page",
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-10-12T09:10:56.109Z",
-    "availability_status": "available",
+    "comparison_url": "https://www.ceneo.pl/181904206",
+    "comparison_seller": "Media Expert",
+    "comparison_seller_country": "Poland",
+    "availability_status": "comparison-listed",
     "status_note": "Comparison-listed; retailer checkout price not independently confirmed. Exact GV-N507TWF3OC-16GD listing; free shipping and dispatch within 1 day.",
     "fx_eur_pln": 4.3835
   }
