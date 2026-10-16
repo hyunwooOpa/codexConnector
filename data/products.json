@@ -253,5 +253,32 @@
         "status_note": "Private marketplace lead; confirm original invoice, remaining warranty and contents. Do not merge with VAT-inclusive new-retail price history."
       }
     ]
+  },
+  {
+    "model": "100-100000662WOF",
+    "name": "AMD Ryzen 9 9900X Boxed",
+    "category": "CPU",
+    "brand": "AMD",
+    "tracking_role": "primary",
+    "competitor_of": [],
+    "enabled": true,
+    "variant": "Ryzen 9 9900X; boxed retail WOF; 12 cores / 24 threads; AM5; no cooler included; exclude tray/OEM, X3D, used and open-box offers",
+    "manufacturer_part_number": "100-100000662WOF",
+    "target_price_eur": null,
+    "product_url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9900x.html",
+    "comparison_url": "https://tweakers.net/pricewatch/2085090/amd-ryzen-9-9900x-boxed.html"
+  },
+  {
+    "model": "100-100001277WOF",
+    "name": "AMD Ryzen 9 9950X Boxed",
+    "category": "CPU",
+    "brand": "AMD",
+    "tracking_role": "primary",
+    "competitor_of": [],
+    "enabled": true,
+    "variant": "Ryzen 9 9950X; boxed retail WOF; 16 cores / 32 threads; AM5; no cooler included; exclude tray/OEM, X3D, used and open-box offers",
+    "manufacturer_part_number": "100-100001277WOF",
+    "target_price_eur": null,
+    "product_url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x.html"
   }
 ]
