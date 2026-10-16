@@ -21,7 +21,14 @@ test('new component draft renders, persists, filters and never appears as a chec
  assert.match(el('overview').innerHTML,/&lt;script&gt;/);
  assert.equal(el('draftCount').textContent,1);
  assert.match(el('overview').innerHTML,/Target €99.00/);
- el('category').value='CPU';vm.runInContext('render()',ctx);assert.match(el('overview').innerHTML,/No products match/);
+ el('category').value='CPU';vm.runInContext('render()',ctx);
+ assert.doesNotMatch(el('overview').innerHTML,/32 GB memory kit/);
+ assert.deepEqual(
+  Array.from(vm.runInContext('visibleProducts().map(p=>p.model)',ctx)),
+  catalog.filter(p=>p.category==='CPU').map(p=>p.model)
+ );
+ el('search').value='TEST-RAM-2X16';vm.runInContext('render()',ctx);
+ assert.match(el('overview').innerHTML,/No products match/);
  const reload=await boot(storage);assert.match(reload.el('overview').innerHTML,/32 GB memory kit/);
  assert.equal(reload.el('trackedCount').textContent,catalog.filter(p=>p.enabled!==false).length);
 });
