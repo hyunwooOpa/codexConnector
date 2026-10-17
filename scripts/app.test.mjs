@@ -4,11 +4,11 @@ import vm from 'node:vm';
 import fs from 'node:fs';
 const source=fs.readFileSync(new URL('../app.js',import.meta.url),'utf8');
 const catalog=JSON.parse(fs.readFileSync(new URL('../data/products.json',import.meta.url)));
-async function boot(storage=new Map()){
+async function boot(storage=new Map(), products=catalog){
  const nodes=new Map();
  const el=id=>{if(!nodes.has(id))nodes.set(id,{value:'',checked:true,innerHTML:'',textContent:'',hidden:false,dataset:{},addEventListener(){},scrollIntoView(){},reset(){},querySelectorAll(){return []},querySelector(){return null},appendChild(){}});return nodes.get(id)};
  const countries=['Germany','Netherlands','Poland'].map(c=>({checked:true,dataset:{country:c}}));
- const ctx=vm.createContext({console,Intl,Date,URL,Blob,document:{getElementById:el,querySelectorAll:s=>s==='[data-country]:checked'||s==='[data-country]'?countries:[]},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},Chart:class{destroy(){}},fetch:async url=>({ok:true,json:async()=>url.includes('products')?catalog:[],text:async()=>JSON.stringify(url.includes('products')?catalog:[])})});
+ const ctx=vm.createContext({console,Intl,Date,URL,Blob,document:{getElementById:el,querySelectorAll:s=>s==='[data-country]:checked'||s==='[data-country]'?countries:[]},localStorage:{getItem:k=>storage.get(k)||null,setItem:(k,v)=>storage.set(k,v)},Chart:class{destroy(){}},fetch:async url=>({ok:true,json:async()=>url.includes('products')?products:[],text:async()=>JSON.stringify(url.includes('products')?products:[])})});
  vm.runInContext(source,ctx);await new Promise(setImmediate);
  return {el,ctx,storage};
 }
@@ -82,7 +82,7 @@ test('published products removed locally export as disabled instead of disappear
 
 
 test('manual observations are labeled unverified instead of lowest checked price',async()=>{
-  const {ctx,el}=await boot();
+  const {ctx,el}=await boot(new Map(),[{model:'P3426WEV',name:'Test monitor',category:'Monitor',enabled:true}]);
   const now=new Date().toISOString();
   vm.runInContext(`observations=[
     {model:'P3426WEV',country:'Netherlands',timestamp:'${now}',available:true,price_eur:555,retailer:'Manual entry',verification:'manual-user-entry'}
@@ -102,4 +102,22 @@ test('last checked timestamp ignores newer manual-only observations',async()=>{
   ]; refreshObservations()`,ctx);
   const ts=vm.runInContext('lastCheckedAt()',ctx);
   assert.equal(ts,Date.parse(checked));
+});
+
+
+
+test('published removals hide cards, options and history despite stale local overrides',async()=>{
+ const storage=new Map([
+  ['pcUpgradeShoppingV1',JSON.stringify({'REMOVED-IPS':{catalog:{model:'REMOVED-IPS',enabled:true}}})],
+  ['customMonitors',JSON.stringify([{model:'REMOVED-IPS',name:'Old IPS'}])]
+ ]);
+ const {ctx,el}=await boot(storage,[
+  {model:'REMOVED-IPS',name:'Removed IPS',category:'Monitor',enabled:false},
+  {model:'ACTIVE-VA',name:'Active VA',category:'Monitor',enabled:true}
+ ]);
+ vm.runInContext("observations=[{model:'REMOVED-IPS',country:'Netherlands',timestamp:new Date().toISOString(),price_eur:400,available:true}];render()",ctx);
+ assert.deepEqual(Array.from(vm.runInContext('visibleProducts().map(p=>p.model)',ctx)),['ACTIVE-VA']);
+ for(const id of ['overview','tableModel','chartModel','priceRows'])assert.doesNotMatch(el(id).innerHTML,/REMOVED-IPS|Removed IPS/);
+ assert.equal(vm.runInContext("drafts.some(p=>p.model==='REMOVED-IPS')",ctx),false);
+ assert.equal(vm.runInContext('observations.length',ctx),1);
 });
