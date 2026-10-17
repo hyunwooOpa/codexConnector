@@ -34,7 +34,8 @@
     "ean": "6937285508515",
     "variant": "X2D dual-nozzle enclosed FDM printer; Combo bundle with AMS 2 Pro; EU version; exclude standalone X2D and other bundles",
     "target_price_eur": null,
-    "product_url": "https://www.3djake.nl/bambu-lab/x2d-combo"
+    "product_url": "https://www.3djake.nl/bambu-lab/x2d-combo",
+    "official_url": "https://eu.store.bambulab.com/products/x2d"
   },
   {
     "model": "FST1-BASIC-NUS",
@@ -46,6 +47,7 @@
     "ean": "0811294039436",
     "variant": "Form Studio 1 Basic package; Graphite Founders Edition; standard Build Platform and Resin Tank; exclude Flex, Professional and Complete packages",
     "target_price_eur": null,
-    "product_url": "https://formlabs.com/eu/products/form-studio-1-basic-founders-edition/"
+    "product_url": "https://formlabs.com/eu/products/form-studio-1-basic-founders-edition/",
+    "official_url": "https://formlabs.com/eu/products/form-studio-1-basic-founders-edition/"
   }
 ]
