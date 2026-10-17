@@ -53,7 +53,7 @@
     "category": "Monitor",
     "brand": "Dell",
     "tracking_role": "competitor",
-    "deselection_reason": "Paused because it is a 3440x1440 business monitor rather than 5K2K. Its webcam and eye-comfort features are useful, but the active list prioritizes sharper text and programming density; it remains a valid office alternative.",
+    "deselection_reason": "Removed from active tracking at user request: all IPS monitors.",
     "competitor_of": [
       "34B2U6603CH",
       "34E1C5600AM"
@@ -62,7 +62,7 @@
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
     "discovery_price_eur": 699,
-    "enabled": true,
+    "enabled": false,
     "reselection_reason": "Restored to the watch list as the strongest of the previously paused alternatives: newer business platform, 100Hz productivity refresh, USB-C hub, webcam, ergonomic adjustment and documented flicker-free eye-comfort features. It remains below the €800 ceiling; its 3440x1440 resolution is the main trade-off versus the active 5K2K models.",
     "variant": "P3426WEB",
     "target_price_eur": null,
@@ -82,10 +82,11 @@
     "discovery_source_url": "https://www.alternate.nl/Monitoren/Monitoren-met-webcam",
     "discovery_checked_at": "2026-09-30T08:00:00+02:00",
     "discovery_price_eur": 479,
-    "enabled": true,
+    "enabled": false,
     "variant": "34BA85QE",
     "target_price_eur": null,
-    "product_url": ""
+    "product_url": "",
+    "deselection_reason": "Removed from active tracking at user request: all IPS monitors."
   },
   {
     "model": "U3425WE",
@@ -101,10 +102,11 @@
     "competitor_reason": "34-inch curved IPS Black ultrawide, 3440x1440 at 120Hz, Thunderbolt 4 and 5-Star Eye Comfort",
     "discovery_source_url": "https://www.dell.com/nl-nl/shop/dell-ultrasharp-34-gebogen-thunderbolt-hubmonitor-u3425we/apd/210-bmdw/monitoren-monitoraccessoires",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
-    "enabled": true,
+    "enabled": false,
     "variant": "U3425WE",
     "target_price_eur": null,
-    "product_url": ""
+    "product_url": "",
+    "deselection_reason": "Removed from active tracking at user request: all IPS monitors."
   },
   {
     "model": "P3426WEV",
@@ -119,11 +121,12 @@
       "34E1C5600AM"
     ],
     "competitor_reason": "34.1-inch curved IPS business ultrawide, 3440x1440 at 100Hz, integrated webcam, USB-C hub and Dell eye-comfort features",
-    "enabled": true,
+    "enabled": false,
     "variant": "P3426WEV; manufacturer part RP34H; 34.1-inch; 3440x1440; 100Hz; IPS; integrated webcam",
     "manufacturer_part_number": "RP34H",
     "target_price_eur": null,
-    "product_url": "https://www.dell.com/nl-nl/shop/monitors/apd/dell-pro-p-34-usb-c-hubmonitor-met-webcam-p3426wev/p3426wev/-"
+    "product_url": "https://www.dell.com/nl-nl/shop/monitors/apd/dell-pro-p-34-usb-c-hubmonitor-met-webcam-p3426wev/p3426wev/-",
+    "deselection_reason": "Removed from active tracking at user request: all IPS monitors."
   },
   {
     "model": "P3425WE",
@@ -139,10 +142,11 @@
     "competitor_reason": "34-inch curved IPS business ultrawide with 3440x1440, USB-C and ergonomic stand",
     "discovery_source_url": "https://www.itpro.com/hardware/monitors/dell-pro-34-plus-p3425we-monitor-review-ultra-wide-ultra-sensible",
     "discovery_checked_at": "2026-09-30T11:00:00+02:00",
-    "enabled": true,
+    "enabled": false,
     "variant": "P3425WE",
     "target_price_eur": null,
-    "product_url": ""
+    "product_url": "",
+    "deselection_reason": "Removed from active tracking at user request: all IPS monitors."
   },
   {
     "model": "T34WD-40",
@@ -176,11 +180,12 @@
       "34E1C5600AM"
     ],
     "competitor_reason": "34-inch curved IPS business ultrawide, 3440x1440 at 100Hz, USB-C 96W, RJ45, built-in KVM and ergonomic stand",
-    "enabled": true,
+    "enabled": false,
     "variant": "34U650A-B; 34-inch; 3440x1440; 100Hz; IPS; 3800R; USB-C 96W; RJ45; built-in KVM",
     "manufacturer_part_number": "34U650A-B",
     "target_price_eur": null,
-    "product_url": "https://www.lg.com/nl/monitoren/ultrawide-monitoren/34u650a-b/"
+    "product_url": "https://www.lg.com/nl/monitoren/ultrawide-monitoren/34u650a-b/",
+    "deselection_reason": "Removed from active tracking at user request: all IPS monitors."
   },
   {
     "model": "G507T-16V3C",
