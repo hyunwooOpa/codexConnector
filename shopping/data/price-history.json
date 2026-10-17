@@ -422,5 +422,26 @@
     "variant": "Form Studio 1 Basic package; Graphite Founders Edition; standard Build Platform and Resin Tank; exclude Flex, Professional and Complete packages",
     "manufacturer_part_number": "FST1-BASIC-NUS",
     "ean": "0811294039436"
+  },
+  {
+    "timestamp": "2026-10-17T21:47:35.233Z",
+    "model": "PF004-P+SA007-EU",
+    "category": "3D Printers",
+    "country": "Netherlands",
+    "retailer": "Bambu Lab EU official store",
+    "original_currency": "EUR",
+    "original_price": 849,
+    "price_eur": 849,
+    "available": true,
+    "url": "https://eu.store.bambulab.com/products/x2d",
+    "verification": "retailer-confirmed",
+    "evidence_type": "user-screenshot",
+    "source_timestamp_status": "not-displayed",
+    "source_checked_at": "2026-10-17T21:47:35.235Z",
+    "tracking_role": "primary",
+    "manufacturer_part_number": "PF004-P+SA007-EU",
+    "ean": "6937285508515",
+    "availability_status": "orderable",
+    "status_note": "User-confirmed Netherlands offer shown in supplied screenshot on 17 October 2026 at 23:44 CEST: selected X2D AMS Combo ×1, €849.00, add-to-cart and buy-now enabled. Shipping and final destination VAT adjustment not shown; checkout total not independently confirmed. Screenshot file: 5E6FCDF8-A529-4D0D-8DA9-0B205C151BE7.png."
   }
 ]
