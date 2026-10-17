@@ -23,5 +23,29 @@
     "identity_status": "User-provided listing; manufacturer model number and selected listing options not independently verified.",
     "specification_source": "User-provided AliExpress listing description",
     "tracking_note": "Internal tracker identifier, not a manufacturer part number. Match the linked listing and all specified features; verify selected variant, VAT, shipping and destination before recording a price."
+  },
+  {
+    "model": "PF004-P+SA007-EU",
+    "name": "Bambu Lab X2D Combo with AMS 2 Pro",
+    "category": "3D Printers",
+    "brand": "Bambu Lab",
+    "enabled": true,
+    "manufacturer_part_number": "PF004-P+SA007-EU",
+    "ean": "6937285508515",
+    "variant": "X2D dual-nozzle enclosed FDM printer; Combo bundle with AMS 2 Pro; EU version; exclude standalone X2D and other bundles",
+    "target_price_eur": null,
+    "product_url": "https://www.3djake.nl/bambu-lab/x2d-combo"
+  },
+  {
+    "model": "FST1-BASIC-NUS",
+    "name": "Formlabs Form Studio 1 Basic Graphite Founders Edition",
+    "category": "3D Printers",
+    "brand": "Formlabs",
+    "enabled": true,
+    "manufacturer_part_number": "FST1-BASIC-NUS",
+    "ean": "0811294039436",
+    "variant": "Form Studio 1 Basic package; Graphite Founders Edition; standard Build Platform and Resin Tank; exclude Flex, Professional and Complete packages",
+    "target_price_eur": null,
+    "product_url": "https://formlabs.com/eu/products/form-studio-1-basic-founders-edition/"
   }
 ]
