@@ -10,7 +10,7 @@ const safeUrl=v=>/^https?:\/\//i.test(v||'')?v:null;
 function saved(key,fallback){try{return JSON.parse(localStorage.getItem(key))??fallback}catch{return fallback}}
 let catalog=[],publishedObservations=[],manualObservations=saved(MANUAL,[]),observations=[],drafts=saved(KEY,[]),shopping=saved(STATE,{}),chart;
 let days='30',chartModel='';
-function products(){return [...catalog,...drafts.filter(d=>!catalog.some(p=>p.model===d.model))].filter(p=>!shopping[p.model]?.removed).map(p=>({...p,...(shopping[p.model]?.catalog||{})}))}
+function products(){return [...catalog,...drafts.filter(d=>!catalog.some(p=>p.model===d.model))].filter(p=>p.enabled!==false&&!shopping[p.model]?.removed).map(p=>({...p,...(shopping[p.model]?.catalog||{})})).filter(p=>p.enabled!==false)}
 function metadata(model){return products().find(p=>p.model===model)||{model,name:model,category:'Other'}}
 function localState(p){return shopping[p.model]||{status:'Planned',target:p.target_price_eur??null,notes:''}}
 function isDraft(p){return !catalog.some(x=>x.model===p.model)}
@@ -152,7 +152,7 @@ async function load(){
  }
  refreshObservations();
  const old=saved('customMonitors',[]);let migrated=0;
- for(const x of old)if(x.model&&!products().some(p=>p.model===x.model)){drafts.push({...x,category:'Monitor',enabled:true});migrated++}
+ for(const x of old)if(x.model&&![...catalog,...drafts].some(p=>p.model===x.model)){drafts.push({...x,category:'Monitor',enabled:true});migrated++}
  if(migrated)persist();
  renderOptions();render();
  const times=observations.filter(o=>COUNTRIES.includes(o.country)&&!o.invalidated_observation).map(o=>Date.parse(o.timestamp)).filter(t=>Number.isFinite(t)&&t<=Date.now()+60000);
@@ -160,3 +160,4 @@ async function load(){
  if(historyWarning){$('chartEmpty').hidden=false;$('chartEmpty').textContent=historyWarning;$('tableCount').textContent=historyWarning;}
 }
 load().catch(e=>{$('overview').innerHTML='<div class="panel empty">'+esc(e.message)+'</div>'});
+
