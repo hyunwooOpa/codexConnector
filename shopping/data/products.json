@@ -49,5 +49,25 @@
     "target_price_eur": null,
     "product_url": "https://formlabs.com/eu/products/form-studio-1-basic-founders-edition/",
     "official_url": "https://formlabs.com/eu/products/form-studio-1-basic-founders-edition/"
+  },
+  {
+    "model": "BOOX-GO-7-WHITE",
+    "name": "Boox Go 7 White",
+    "category": "E-readers",
+    "brand": "Boox",
+    "enabled": true,
+    "variant": "Go 7; 7-inch monochrome E Ink; White; exclude Go Color 7 and Black",
+    "target_price_eur": null,
+    "product_url": "https://tweakers.net/pricewatch/2316600/boox-go-7-wit.html"
+  },
+  {
+    "model": "BOOX-GO-6-GEN-II-WHITE",
+    "name": "Boox Go 6 (Gen II) White",
+    "category": "E-readers",
+    "brand": "Boox",
+    "enabled": true,
+    "variant": "Go 6 Generation II; 6-inch monochrome E Ink; 32GB; White; exclude first generation and other colors",
+    "target_price_eur": null,
+    "product_url": "https://tweakers.net/pricewatch/2375266/boox-go-6-gen-ii-wit.html"
   }
 ]
