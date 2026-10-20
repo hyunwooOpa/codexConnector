@@ -41,17 +41,19 @@ test('newer evidence-gap row does not hide the latest verified shopping price',a
 
 test('shopping chart keeps each country in a separate dataset',async()=>{
   const {ctx,charts}=await boot();
+  const product=catalog.find(p=>p.enabled!==false);
+  assert.ok(product,'An enabled shopping product is required');
   const t1=new Date(Date.now()-60*60*1000).toISOString();
   const t2=new Date(Date.now()-30*60*1000).toISOString();
   vm.runInContext(`observations=[
-    {model:'AU1003501',country:'Netherlands',timestamp:'${t1}',available:true,price_eur:77.99,retailer:'NL'},
-    {model:'AU1003501',country:'Germany',timestamp:'${t2}',available:true,price_eur:89.99,retailer:'DE'}
+    {model:${JSON.stringify(product.model)},country:'Netherlands',timestamp:'${t1}',available:true,price_eur:77.99,retailer:'NL'},
+    {model:${JSON.stringify(product.model)},country:'Germany',timestamp:'${t2}',available:true,price_eur:89.99,retailer:'DE'}
   ]; renderChart()`,ctx);
   const datasets=charts.at(-1).data.datasets;
   assert.equal(datasets.length,2);
   const labels=Array.from(datasets,d=>d.label);
   assert.equal(labels.length,2);
-  assert.ok(labels.every(x=>/Auronic/.test(x)));
+  assert.ok(labels.every(x=>x.includes(product.name)));
   assert.ok(labels.some(x=>/Germany/.test(x)));
   assert.ok(labels.some(x=>/Netherlands/.test(x)));
   assert.ok(datasets.every(d=>new Set(d.data.map(p=>p.country)).size===1));
@@ -81,7 +83,9 @@ test('shopping catalog still renders when price history is temporarily unavailab
   });
   vm.runInContext(source.replace(/load\(\);\s*$/,''),ctx);
   await vm.runInContext('load()',ctx);
-  assert.match(el('overview').innerHTML,/Auronic/);
+  const enabledProduct=catalog.find(p=>p.enabled!==false);
+  assert.ok(enabledProduct,'An enabled shopping product is required');
+  assert.ok(el('overview').innerHTML.includes(enabledProduct.name.replace(/&/g,'&amp;')));
   assert.match(el('tableCount').textContent,/History unavailable/i);
   assert.match(el('lastUpdated').textContent,/History unavailable/i);
 });
