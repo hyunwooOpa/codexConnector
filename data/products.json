@@ -285,5 +285,18 @@
     "manufacturer_part_number": "100-100001277WOF",
     "target_price_eur": null,
     "product_url": "https://www.amd.com/en/products/processors/desktops/ryzen/9000-series/amd-ryzen-9-9950x.html"
+  },
+  {
+    "model": "SDDDC2-064G-G46",
+    "name": "SanDisk Ultra Dual Drive USB Type-C 64GB",
+    "category": "USB Flash Drive",
+    "brand": "SanDisk",
+    "tracking_role": "primary",
+    "competitor_of": [],
+    "enabled": true,
+    "variant": "64GB; USB-A + USB-C; USB 3.1 Gen 1; SDDDC2 series; exclude Ultra Dual Drive Go (SDDDC3), Luxe (SDDDC4), other capacities and variants",
+    "manufacturer_part_number": "SDDDC2-064G-G46",
+    "target_price_eur": null,
+    "product_url": "https://www.sandisk.com/nl-nl/products/usb-flash-drives/sandisk-ultra-dual-drive-m30-usb-3-1-type-c?sku=SDDDC2-064G-G46"
   }
 ]
