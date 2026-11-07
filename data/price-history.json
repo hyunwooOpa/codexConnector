@@ -132715,11 +132715,12 @@
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-11-07T16:05:44.898Z",
     "status_note": "Pricewatch-listed; retailer checkout price not independently confirmed",
-    "verification": "comparison-listed",
+    "verification": "Pricewatch-listed; retailer checkout price not independently confirmed",
     "availability_status": "In stock; free shipping shown by comparison listing",
     "comparison_url": "https://gamecrew.nl/nl-nl/producten/philips-6000-series-34b2u6603ch-curved-ultrawide-monitor-webcam-thunderbolt-4-us-me6gn78nc6",
     "direct_url": null,
-    "seller_country": "Netherlands"
+    "comparison_seller": "Joybuy",
+    "comparison_seller_country": "Netherlands"
   },
   {
     "timestamp": "2026-11-07T16:05:44.898Z",
@@ -132901,12 +132902,13 @@
     "source_timestamp_status": "dated",
     "source_checked_at": "2026-11-07T16:05:44.898Z",
     "status_note": "Comparison-listed; retailer checkout price not independently confirmed",
-    "verification": "comparison-listed",
+    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "availability_status": "In stock; offer updated 35 minutes before check",
     "comparison_url": "https://www.gputracker.eu/en/product/62409/34-lenovo-thinkvision-t34wd-40",
     "direct_url": null,
-    "seller_country": "Netherlands",
-    "source_price_at": "2026-11-07T15:30:44.898Z"
+    "source_price_at": "2026-11-07T15:30:44.898Z",
+    "comparison_seller": "Coolblue.nl",
+    "comparison_seller_country": "Netherlands"
   },
   {
     "timestamp": "2026-11-07T16:05:44.898Z",
@@ -132990,14 +132992,15 @@
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-11-07T16:05:44.898Z",
     "status_note": "Comparison-listed; retailer checkout price not independently confirmed",
-    "verification": "comparison-listed",
+    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "availability_status": "Current exact listing from PLN 8,888; 7 shops; free shipping in 5 offers",
     "comparison_url": "https://www.ceneo.pl/181008713",
     "direct_url": null,
-    "seller_country": "Poland",
     "fx_eur_pln": 4.3925,
     "fx_source_url": "https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/tabela-a/",
-    "fx_rate_date": "2026-11-06"
+    "fx_rate_date": "2026-11-06",
+    "comparison_seller": "Ceneo.pl marketplace sellers",
+    "comparison_seller_country": "Poland"
   },
   {
     "timestamp": "2026-11-07T16:05:44.898Z",
@@ -133056,14 +133059,15 @@
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-11-07T16:05:44.898Z",
     "status_note": "Comparison-listed; retailer checkout price not independently confirmed",
-    "verification": "comparison-listed",
+    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "availability_status": "Ships in 1 day; free shipping",
     "comparison_url": "https://www.ceneo.pl/171280249",
     "direct_url": null,
-    "seller_country": "Poland",
     "fx_eur_pln": 4.3925,
     "fx_source_url": "https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/tabela-a/",
-    "fx_rate_date": "2026-11-06"
+    "fx_rate_date": "2026-11-06",
+    "comparison_seller": "Sferis",
+    "comparison_seller_country": "Poland"
   },
   {
     "timestamp": "2026-11-07T16:05:44.898Z",
@@ -133122,14 +133126,15 @@
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-11-07T16:05:44.898Z",
     "status_note": "Comparison-listed; retailer checkout price not independently confirmed",
-    "verification": "comparison-listed",
+    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "availability_status": "Free shipping; ships within 3 days",
     "comparison_url": "https://www.ceneo.pl/171263435",
     "direct_url": null,
-    "seller_country": "Poland",
     "fx_eur_pln": 4.3925,
     "fx_source_url": "https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/tabela-a/",
-    "fx_rate_date": "2026-11-06"
+    "fx_rate_date": "2026-11-06",
+    "comparison_seller": "Ceneo-listed business seller",
+    "comparison_seller_country": "Poland"
   },
   {
     "timestamp": "2026-11-07T16:05:44.898Z",
@@ -133367,14 +133372,15 @@
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-11-07T16:05:44.898Z",
     "status_note": "Comparison-listed; retailer checkout price not independently confirmed",
-    "verification": "comparison-listed",
+    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "availability_status": "Exact wired M-HT1URBK new listing; delivered price shown as PLN 310.48",
     "comparison_url": "https://allegro.pl/listing?string=M-HT1URBK",
     "direct_url": null,
-    "seller_country": "Poland",
     "fx_eur_pln": 4.3925,
     "fx_source_url": "https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/tabela-a/",
-    "fx_rate_date": "2026-11-06"
+    "fx_rate_date": "2026-11-06",
+    "comparison_seller": "Allegro.pl marketplace seller",
+    "comparison_seller_country": "Poland"
   },
   {
     "timestamp": "2026-11-07T16:05:44.898Z",
@@ -133433,13 +133439,14 @@
     "source_timestamp_status": "not-displayed",
     "source_checked_at": "2026-11-07T16:05:44.898Z",
     "status_note": "Comparison-listed; retailer checkout price not independently confirmed",
-    "verification": "comparison-listed",
+    "verification": "Comparison-listed; retailer checkout price not independently confirmed",
     "availability_status": "Free shipping; ships in 1 day",
     "comparison_url": "https://www.ceneo.pl/173403979",
     "direct_url": null,
-    "seller_country": "Poland",
     "fx_eur_pln": 4.3925,
     "fx_source_url": "https://nbp.pl/statystyka-i-sprawozdawczosc/kursy/tabela-a/",
-    "fx_rate_date": "2026-11-06"
+    "fx_rate_date": "2026-11-06",
+    "comparison_seller": "Media Expert",
+    "comparison_seller_country": "Poland"
   }
 ]
