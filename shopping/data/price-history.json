@@ -13923,13 +13923,17 @@
     "retailer": "Lay3rs Retail",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
     "direct_url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
     "availability_status": "orderable",
-    "status_note": "Official Bambu Lab X2D page was checked first but returned a blocked response. Lay3rs Netherlands lists exact X2D AMS Combo at €784.80 incl. VAT and marks it available; standalone X2D was excluded.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "shipping": "Standard Netherlands shipping; amount not displayed",
-    "verification": "retailer-confirmed"
+    "verification": "retailer-confirmed",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "model": "PF004-P+SA007-EU",
@@ -14192,13 +14196,17 @@
     "retailer": "Lay3rs",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/bambu-lab-x2d-combo.html",
     "direct_url": null,
     "availability_status": "orderable",
-    "status_note": "Official Bambu Lab X2D page was checked first but blocked. Current Lay3rs Netherlands page lists the exact X2D AMS Combo PF004-P+SA007-EU at €784.80 including VAT and orderable.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "shipping": "Standard Netherlands shipping; amount not displayed",
-    "verification": "retailer-confirmed"
+    "verification": "retailer-confirmed",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "model": "PF004-P+SA007-EU",
@@ -15993,12 +16001,16 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
     "verification": "retailer-confirmed",
     "source_checked_at": "2026-11-01T00:06:58.733Z",
     "availability_status": "Available",
-    "status_note": "Exact X2D AMS Combo; official Bambu store was checked first but returned an access/payment block; Dutch VAT included."
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-01T00:06:58.733Z",
@@ -16602,11 +16614,15 @@
     "retailer": "Lay3rs Retail",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/3d-printers/professional-3d-printers/bambu-lab/",
     "verification": "retailer-confirmed",
     "availability_status": "Available",
-    "status_note": "Exact X2D AMS Combo MPN/EAN; Dutch VAT included. Official Bambu store was checked first but access was blocked."
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-04T13:01:52.133Z",
@@ -16814,11 +16830,15 @@
     "retailer": "Lay3rs Retail",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/3d-printers/professional-3d-printers/bambu-lab/",
-    "status_note": "Exact X2D AMS Combo MPN/EAN; Dutch VAT included. Official Bambu store was checked first but access was blocked.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "verification": "retailer-confirmed",
-    "availability_status": "Available"
+    "availability_status": "Available",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-04T18:04:43.440Z",
@@ -17035,11 +17055,15 @@
     "retailer": "Lay3rs Retail",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/3d-printers/professional-3d-printers/bambu-lab/",
-    "status_note": "Exact X2D AMS Combo MPN PF004-P+SA007-EU and EAN 6937285508515; Dutch VAT included. Official Bambu store was checked first but access was blocked.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "verification": "retailer-confirmed",
-    "availability_status": "Available; approximately 5-day delivery"
+    "availability_status": "Available; approximately 5-day delivery",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-04T23:12:26.888Z",
@@ -17267,11 +17291,15 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/3d-printers/professional-3d-printers/bambu-lab/",
-    "status_note": "Exact X2D AMS Combo MPN PF004-P+SA007-EU and EAN 6937285508515; Dutch VAT included. Official Bambu store was checked first but access was blocked.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "verification": "retailer-confirmed",
-    "availability_status": "Available; approximately 5-day delivery"
+    "availability_status": "Available; approximately 5-day delivery",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-05T04:11:21.701Z",
@@ -17507,11 +17535,15 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/bambu-lab-x2d-ams-combo.html",
-    "status_note": "Exact X2D AMS Combo MPN PF004-P+SA007-EU and EAN 6937285508515; Dutch VAT included. Official Bambu store was checked first but access was blocked. Official Bambu EU store checked first; destination-specific checkout was inaccessible.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "availability_status": "Available; standard Netherlands shipping; approximately 5 days",
-    "verification": "retailer-confirmed"
+    "verification": "retailer-confirmed",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-05T09:05:13.997Z",
@@ -17747,11 +17779,15 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
-    "status_note": "Exact X2D AMS Combo MPN PF004-P+SA007-EU and EAN 6937285508515; Dutch VAT included. Official Bambu store was checked first but access was blocked. Official Bambu EU store checked first; destination-specific checkout was inaccessible. Official Bambu EU store checked first; destination-specific checkout was inaccessible.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "availability_status": "Available promotional gross price; standard Netherlands shipping",
-    "verification": "retailer-confirmed"
+    "verification": "retailer-confirmed",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-05T14:00:25.382Z",
@@ -17990,11 +18026,15 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
-    "status_note": "Exact X2D AMS Combo MPN PF004-P+SA007-EU and EAN 6937285508515; official Bambu EU store was checked first but destination-specific checkout was inaccessible.",
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
     "availability_status": "Available promotional gross price; Netherlands delivery",
-    "verification": "retailer-confirmed"
+    "verification": "retailer-confirmed",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-05T19:07:28.743Z",
@@ -18220,11 +18260,15 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
     "verification": "retailer-confirmed",
     "availability_status": "Available; standard Netherlands shipping",
-    "status_note": "Exact X2D AMS Combo EU bundle; 21% VAT included; standalone X2D excluded."
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-06T00:02:01.624Z",
@@ -18446,11 +18490,15 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
+    "available": false,
     "url": "https://www.lay3rs.nl/en/bambu-lab-x2d-combo.html",
     "verification": "retailer-confirmed",
     "availability_status": "Promotion displayed; delivery indication 5 working days; Netherlands storefront",
-    "status_note": "Exact PF004-P+SA007-EU X2D Combo with AMS 2 Pro; VAT-inclusive promotional price; offer shown valid through 1 December 08:00 CET."
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
+    "orderable": false,
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-06T05:04:51.000Z",
@@ -20650,13 +20698,16 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
-    "orderable": true,
+    "available": false,
+    "orderable": false,
     "vat_included": true,
     "url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
     "verification": "retailer-confirmed",
     "availability_status": "Exact X2D AMS Combo; VAT included; deliverable on Dutch storefront.",
-    "status_note": "Exact variant; local VAT included and apparent orderability verified."
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-08T02:10:05.722Z",
@@ -21241,15 +21292,18 @@
     "original_currency": "EUR",
     "original_price": 784.8,
     "price_eur": 784.8,
-    "available": true,
-    "orderable": true,
+    "available": false,
+    "orderable": false,
     "vat_included": true,
     "url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
     "verification": "retailer-confirmed",
     "availability_status": "Exact X2D AMS Combo; VAT included and available.",
     "shipping": "Standard Netherlands shipping; amount not displayed",
-    "status_note": "Exact PF004-P+SA007-EU bundle identity cross-checked by EAN/MPN evidence.",
-    "direct_url": "https://www.lay3rs-retail.nl/nl/tags/x2d/"
+    "status_note": "Invalidated historical price: displayed €784.80 was ex VAT; €949.61 was VAT-inclusive.",
+    "direct_url": "https://www.lay3rs-retail.nl/nl/tags/x2d/",
+    "invalidated": true,
+    "invalidated_at": "2026-11-08T17:03:59.436Z",
+    "invalidated_reason": "Displayed €784.80 was the ex-VAT amount; the same page displayed €949.61 including 21% Netherlands VAT."
   },
   {
     "timestamp": "2026-11-08T12:08:59.885Z",
